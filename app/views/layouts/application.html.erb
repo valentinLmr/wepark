@@ -12,27 +12,23 @@
   </head>
 
   <body>
-<<<<<<< HEAD
+
     <%= render 'shared/navbar' %>
-    <%= yield %>
 
-    <%= javascript_include_tag 'application' %>
-    <%= javascript_pack_tag 'application' %>
-
-  </body>
-=======
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
     <div class="full-screen">
 
-      <%= yield %>
+      <%= render 'shared/banner' %>
 
     </div>
+
+    <%= yield %>
+
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
 
     <%= render 'shared/footer' %>
 
     <%= javascript_include_tag "application" %> <!-- from app/assets/javascripts/application.js -->
     <%= javascript_pack_tag "application" %>    <!-- from app/javascript/packs/application.js -->
     </body>
->>>>>>> 0c66d68b568d4e32fa6c1bc51af59f594f00364a
 </html>
