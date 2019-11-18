@@ -7,5 +7,4 @@ class Garage < ApplicationRecord
   validates :location, presence: true
   validates :description, presence: true
   validates :photo, presence: true
-
 end
