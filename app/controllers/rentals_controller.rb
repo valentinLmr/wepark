@@ -11,6 +11,8 @@ class RentalsController < ApplicationController
 
   def create
     @rental = Rental.new(params_rental)
+    @rental.user = current_user
+
     if @rental.save
       redirect_to garage_rental_path
     else
