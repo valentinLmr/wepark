@@ -3,4 +3,5 @@
 <% @garages.each do |garage| %>
   <p>Garage de <%= garage.capacity %>m2</p>
   <p><%= garage.description %></p>
+  <img style="width:200px;" src="<%= garage.photo %>"/>
 <% end %>
