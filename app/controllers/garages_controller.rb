@@ -33,7 +33,7 @@ class GaragesController < ApplicationController
       redirect_to garage_path
     else
       render :edit
-
+    end
   end
 
   def destroy
