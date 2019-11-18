@@ -12,30 +12,15 @@
   </head>
 
   <body>
-
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
     <%= render 'shared/navbar' %>
-    <%= yield %>
-    <div class="container">
-    <%= render 'shared/searchbar' %>
-    </div>
 
-    <%= javascript_include_tag 'application' %>
-    <%= javascript_pack_tag 'application' %>
+    <%= yield %>
 
   </body>
 
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <div class="full-screen">
-
-      <%= yield %>
-
-    </div>
-
-    <%= render 'shared/footer' %>
-
-    <%= javascript_include_tag "application" %> <!-- from app/assets/javascripts/application.js -->
-    <%= javascript_pack_tag "application" %>    <!-- from app/javascript/packs/application.js -->
-    </body>
-
+  <%= render 'shared/footer' %>
+  <%= javascript_include_tag "application" %> <!-- from app/assets/javascripts/application.js -->
+  <%= javascript_pack_tag "application" %>    <!-- from app/javascript/packs/application.js -->
 </html>
