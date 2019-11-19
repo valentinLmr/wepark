@@ -1,0 +1,21 @@
+<div class="d-flex carddd mt-3 d-flex align-items-center justify-content-between">
+
+  <div class="left-card ml-4" style="text-align: center;">
+    <h5>Garage de <%= rental.garage.capacity %>m2 à <%= rental.garage.city %></h5>
+    <img class="mb-2" src="<%= rental.garage.photo %>" />
+    <p><%= rental.garage.price %>€/mois</p>
+  </div>
+
+  <div class="middle-card ml-4">
+    <h5>Informations concernant votre location</h5>
+    <p>Prix mensuel : <%= rental.garage.price %>€</p>
+    <p>Adresse : <%= rental.garage.location %> <%= rental.garage.city %></p>
+    <p>Du : <%= rental.start_date %></p>
+    <p>Au : <%= rental.end_date %></p>
+  </div>
+
+  <div class="right-card mr-3" style="text-align: center;">
+    <%= link_to 'Annuler cette location', rental_path(rental), method: :delete, data: { confirm: "Etes-vous certains ?"}, class: 'btn btn-danger' %>
+  </div>
+
+</div>

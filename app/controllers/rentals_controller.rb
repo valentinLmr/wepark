@@ -35,6 +35,8 @@ class RentalsController < ApplicationController
 
   def destroy
     @rental = Rental.find(params[:id])
+    @rental.delete
+    redirect_to dashboard_path
   end
 
   private

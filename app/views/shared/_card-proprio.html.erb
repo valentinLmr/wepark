@@ -1,0 +1,28 @@
+<div class="d-flex carddd mt-3 d-flex align-items-center justify-content-between">
+
+  <div class="left-card ml-4" style="text-align: center;">
+      <h5>Garage de <%= garage.capacity %>m2 à <%= garage.city %></h5>
+      <img class="mb-2" src="<%= garage.photo %>" />
+      <p><%= garage.price %>€/mois</p>
+  </div>
+
+  <div class="middle-card ml-4">
+    <% if garage.rentals.last != nil %>
+      <h5 style="text-align: center;">Vos réservations :</h5> <br>
+        <% garage.rentals.each do |rental| %>
+          <ul>
+            <li><strong><%= rental.user.first_name %></strong> : du <%= rental.start_date %> au <%= rental.end_date %>
+              <%= link_to '(annuler)', rental_path(rental), method: :delete, data: { confirm: "Souhaitez-vous vraiment annuler cette réservation ?" } %></li>
+          </ul>
+        <% end %>
+    <% else %>
+      <p>Aucune réservation en cours</p>
+    <% end %>
+  </div>
+
+  <div class="right-card mr-3" style="text-align: center;">
+    <%= link_to 'Editer ce garage', edit_garage_path(garage), class: 'btn btn-warning mb-3' %> <br>
+    <%= link_to 'Supprimer ce garage', garage_path(garage), method: :delete, data: { confirm: "Etes-vous certains ?"}, class: 'btn btn-danger' %>
+  </div>
+
+</div>
