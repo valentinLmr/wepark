@@ -9,21 +9,17 @@
 
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
+    <ul class="navbar-nav mr-auto d-flex align-items-center">
       <li class="nav-item active">
         <%= link_to "Connexion", "#1", class: "nav-link" %>
       </li>
       <li class="nav-item">
         <%= link_to "S'inscrire", "#2", class: "nav-link" %>
       </li>
-      <li class="nav-item dropdown">
-        <%= image_tag "https://previews.123rf.com/images/123vector/123vector1410/123vector141000378/33052296-illustration-de-bleu-carr%C3%A9-ic%C3%B4ne-du-design-pour-la-question.jpg", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-          <%= link_to "Comment ça marche?", "#", class: "dropdown-item" %>
-          <%= link_to "Foire aux questions", "#", class: "dropdown-item" %>
-        </div>
+      <li class="nav-item">
+        <%= link_to "Des questions ?", "#2", class: "nav-link" %>
       </li>
-      <li class="nav-item dropdown">
+      <li class="nav-item dropdown mx-2">
         <%= link_to "PROPOSER VOTRE GARAGE", "#", class: "nav-item"%>
       </li>
     </ul>

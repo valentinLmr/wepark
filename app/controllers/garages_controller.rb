@@ -1,5 +1,4 @@
 class GaragesController < ApplicationController
-
     skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
@@ -12,8 +11,10 @@ class GaragesController < ApplicationController
 
   def create
     @garage = Garage.new(garage_params)
+    @garage.user = current_user
+
     if @garage.save
-      redirect_to garage_path
+      redirect_to garages_path
     else
       render :new
     end
