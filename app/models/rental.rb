@@ -2,7 +2,7 @@ class Rental < ApplicationRecord
   belongs_to :garage
   belongs_to :user
   validates :start_date, :end_date, presence: true, availability: true
-  validate :end_date_after_start_date, :date_unavailable
+  validate :end_date_after_start_date, :validate_each
 
 
   # validates :check_date
@@ -20,6 +20,8 @@ class Rental < ApplicationRecord
 
 
   def validate_each(record, attribute, value)
+    raise
+    Rental.where("start_date >= ? AND end_date <= ?", record.start_date, record.end_date)
     rentals = Rental.where(["garage_id =?", record.garage_id])
     date_ranges = rentals.map { |r| r.start_date..r.end_date }
 
