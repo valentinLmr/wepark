@@ -12,9 +12,10 @@ class RentalsController < ApplicationController
   def create
     @rental = Rental.new(params_rental)
     @rental.user = current_user
+    @rental.garage = Garage.find(params[:garage_id])
 
     if @rental.save
-      redirect_to garage_rental_path
+      redirect_to rental_path(@rental)
     else
       render :new
     end

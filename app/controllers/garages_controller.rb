@@ -22,6 +22,7 @@ class GaragesController < ApplicationController
 
   def show
     @garage = Garage.find(params[:id])
+    @rental = Rental.new
   end
 
   def edit
