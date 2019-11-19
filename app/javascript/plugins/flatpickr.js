@@ -15,6 +15,7 @@ import rangePlugin from "flatpickr/dist/plugins/rangePlugin"
 
 
 const rentalform = document.getElementById('rental-form-div');
+  console.log(rentalform)
 console.log(rentalform)
  if (rentalform) {
     const rentals = JSON.parse(rentalform.dataset.rentals);
