@@ -1,6 +1,56 @@
+<div class="container">
+  <div class="row">
 
-<%= simple_form_for [@garage, @rental] do |f| %>
-  <%= f.input :start_date %>
-  <%= f.input :end_date %>
-  <%= f.submit %>
-<% end %>
+    <div class="col-8 my-3" style="background-color: white; border-radius: 10px;">
+      <div class="garage-info-header d-flex justify-content-between my-2">
+        <div class="garage-title"><h2>Garage de <%= @garage.capacity %>m2</h2></div>
+        <div class="garage-price"><h2><%= @garage.price %>€/mois</h2></div>
+      </div>
+      <div class="garage-images border-bottom" style="margin: auto; text-align: center;">
+        <img style="width:600px; border-radius: 10px;" src="<%= @garage.photo %>"/>
+        <p class="py-2"><i class="fas fa-search-location"></i>  <%= @garage.location %></p>
+      </div>
+      <div class="garage-description my-3">
+        <h4>Description :</h4>
+        <p><%= @garage.description %></p>
+      </div>
+    </div>
+
+    <div class="col-4">
+      <div class="info-proprietaire my-3 mb-3" style="text-align: center; background-color: white; border-radius: 10px;">
+        <h3 style="text-align: center;" class="py-2">Proprétaire</h3>
+        <p class="mx-3"><%= @garage.user.first_name %> <%= @garage.user.last_name %></p>
+        <a class="btn btn-primary mb-3" style="border-radius: 10px;" href="<%= @garage.user.email %>">Contacter le propriétaire</a>
+      </div>
+      <div class="info-proprietaire my-3 mb-3" style="text-align: center; background-color: white; border-radius: 10px;">
+        <h3 style="text-align: center;" class="py-2">Réserver en ligne</h3>
+        <div class="mx-2 mb-2">
+          <%= simple_form_for [@garage, @rental] do |f| %>
+            <%= f.input :start_date %>
+            <%= f.input :end_date %>
+            <%= f.submit %>
+          <% end %>
+          <br>
+        </div>
+      </div>
+
+      <div class="reasurance-garage-show mx-3">
+        <div class="d-flex justify-content-around">
+          <div class="col-6 mr-2" style="text-align: center; background-color: white; border-radius: 10px;">
+            <i class="fas fa-lock"></i>
+            <h6>Assurance tout compris</h6>
+          </div>
+          <div class="col-6 ml-2" style="text-align: center; background-color: white; border-radius: 10px;">
+            <i class="far fa-window-close"></i>
+            <h6>Annulation gratuite</h6>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+</div>
+
