@@ -4,6 +4,11 @@
 <div style="border: 1px solid black">
   <h2>Garage de <%= garage.capacity %>m2</h2>
   <img style="width:200px;" src="<%= garage.photo %>"/>
+
+  <%= link_to showgarage_path(garage), method: "show" do %>
+    <i class="fas fa-plus"></i>
+  <% end %>
+
   <p><%= garage.price %>€/mois - <%= garage.description %></p>
 </div>
 <% end %>
