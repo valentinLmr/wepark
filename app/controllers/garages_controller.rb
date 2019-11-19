@@ -1,17 +1,20 @@
 class GaragesController < ApplicationController
-    skip_before_action :authenticate_user!, only: [:index, :show]
+  skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-    @garages = Garage.all
+    # @garages = Garage.all
+    @garages = policy_scope(Garage)
   end
 
   def new
     @garage = Garage.new
+    authorize(@garage)
   end
 
   def create
     @garage = Garage.new(garage_params)
     @garage.user = current_user
+    authorize(@garage)
 
     if @garage.save
       redirect_to garages_path
@@ -22,6 +25,7 @@ class GaragesController < ApplicationController
 
   def show
     @garage = Garage.find(params[:id])
+    authorize(@garage)
   end
 
   def edit
