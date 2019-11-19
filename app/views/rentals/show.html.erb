@@ -1,3 +1,31 @@
 
-<p> <%= @rental.start_date %> </p>
-<p> <%= @rental.end_date %> </p>
+
+
+
+<div class="container" style="min-height: 80vh;">
+  <div class="row">
+    <div class="col-sm-12 col-md-6 col-lg-6 mt-3 py-3" style="background-color: white;">
+      <div class="form-wrapper" style="width: 400px; margin: 0 auto;">
+        <h1><strong>Votre Location</strong></h1>
+        <div class="date">
+        <p> From :<%= @rental.start_date %> </p>
+        <p> To: <%= @rental.end_date %> </p>
+        </div>
+        <div class="info">
+          <div class="proprio">
+            <h3>Propriétaire:</h3>
+            <p><i class="fas fa-user-check"></i>   <%= @garage.user.first_name %></p>
+            <p><i class="fas fa-phone"></i>     <%= @garage.user.phone_number %></p>
+            <p><i class="fas fa-compass"></i>     <%= @garage.location %></p>
+          </div>
+        <div class="price">
+          <strong><%= @garage.price %>€/mois</strong>
+        </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-12 col-md-6 col-lg-6 mt-3 py-3" style="background-color: white; text-align: center;">
+        <img class="mb-2" style="width:450px; border-radius: 10px;" src="<%= @garage.photo %>" />
+    </div>
+</div>

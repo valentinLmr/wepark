@@ -2,12 +2,22 @@ class RentalsController < ApplicationController
   skip_before_action :authenticate_user!, only: :show
 
   def show
+    @garage = Garage.find(params[:id])
     @rental = Rental.find(params[:id])
   end
 
   def new
-    @rental = Rental.new
     @garage = Garage.find(params[:garage_id])
+    @rental = Rental.new
+    @rentals = @garage.next_bookings
+    @rental_dates = @rentals.map do |rental|
+      {
+        from: rental.start_date,
+        to: rental.end_date
+      }
+    end
+    # @rental = Rental.new
+    # @garage = Garage.find(params[:garage_id])
   end
 
   def create
@@ -32,4 +42,5 @@ class RentalsController < ApplicationController
   def params_rental
     params.require(:rental).permit(:start_date, :end_date)
   end
+
 end
