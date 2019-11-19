@@ -1,2 +1,6 @@
-<h1>Garages#show</h1>
-<p>Find me in app/views/garages/show.html.erb</p>
+
+<%= simple_form_for [@garage, @rental] do |f| %>
+  <%= f.input :start_date %>
+  <%= f.input :end_date %>
+  <%= f.submit %>
+<% end %>
