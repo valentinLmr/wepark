@@ -1,2 +1,39 @@
-<h1>Profiles#dashboard</h1>
-<p>Find me in app/views/profiles/dashboard.html.erb</p>
+<div class="container dashboard-container mt-3 mb-3">
+<h2>Bienvenue dans votre dashboard <%= current_user.first_name %></h2>
+
+<div class="dashboard-proprietaire py-3 mt-4">
+  <div class="d-flex justify-content-between">
+    <h3>Vos garages en tant que propriétaire</h3>
+    <div><%= link_to 'Ajouter un garage', new_garage_path, class: 'btn btn-primary' %></div>
+  </div>
+  <% if current_user.garages.last != nil %>
+    <div class="list-garage-proprio mt-3">
+      <% @current_user.garages.each do |garage| %>
+        <%= render '/shared/card-proprio', garage: garage %>
+      <% end %>
+    </div>
+  <% else %>
+    <p>Vous ne proposez aucun garage à la location</p>
+  <% end %>
+</div>
+
+<div class="dashboard-locataire py-3 mt-4">
+  <div class="d-flex justify-content-between">
+    <h3>Vos garages en tant que locataire</h3>
+    <div><%= link_to 'Réserver un nouveau garage', garages_path(@garages), class: 'btn btn-primary' %></div>
+  </div>
+  <% if current_user.rentals.last != nil %>
+    <div class="list-garage-proprio mt-3">
+      <% @current_user.rentals.each do |rental| %>
+        <%= render '/shared/card-locataire', rental: rental %>
+      <% end %>
+    </div>
+  <% else %>
+    <p>Vous ne louez aucun garages !</p>
+  <% end %>
+</div>
+
+</div>
+
+
+
