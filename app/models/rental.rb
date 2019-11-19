@@ -2,7 +2,7 @@ class Rental < ApplicationRecord
   belongs_to :garage
   belongs_to :user
 
-  validates :start_date, :end_date, presence: true, availability: true
+  validates :start_date, :end_date, presence: true
   validate :end_date_after_start_date, :validate_each
 
 
@@ -19,17 +19,24 @@ class Rental < ApplicationRecord
     end
   end
 
-
-  def validate_each(record, attribute, value)
-    raise
-    Rental.where("start_date >= ? AND end_date <= ?", record.start_date, record.end_date)
-    rentals = Rental.where(["garage_id =?", record.garage_id])
-    date_ranges = rentals.map { |r| r.start_date..r.end_date }
-
-    date_ranges.each do |range|
-      if range.include? value
-        record.errors.add(attribute, "not available")
-      end
-    end
+  def parse_date(year, month, day)
+    Date.parse("#{year}-#{month}-#{day}")
   end
 
+  def validate_each
+    rentals = self.garage.rentals
+    rentals = rentals.map do |rental|
+      (rental.start_date..rental.end_date).to_a
+    end
+
+    rentals.flatten
+    rental_array_date = (self.start_date..self.end_date).to_a
+
+    # Rental.where("start_date >= ? AND end_date <= ?", record.start_date, record.end_date)
+    # rentals = Rental.where(["garage_id =?", record.garage_id])
+    # date_ranges = rentals.map { |r| r.start_date..r.end_date }
+    if rentals.flatten - rental_array_date != rentals.flatten
+      errors.add(:start_date, "not available")
+    end
+  end
+end
