@@ -19,7 +19,7 @@ gem 'devise'
 gem 'bootstrap', '~> 4.3.1'
 gem 'carrierwave', '~> 1.2'
 gem 'cloudinary', '~> 1.9.1'
-
+gem 'geocoder'
 gem 'pundit'
 
 group :development do
