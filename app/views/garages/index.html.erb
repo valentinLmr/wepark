@@ -1,14 +1,10 @@
 <h1>Voici tous les garages</h1>
-
 <% @garages.each do |garage| %>
 <div style="border: 1px solid black">
-  <h2>Garage de <%= garage.capacity %>m2</h2>
-  <img style="width:200px;" src="<%= garage.photo %>"/>
-
-  <%= link_to showgarage_path(garage), method: "show" do %>
-    <i class="fas fa-plus"></i>
+    <h2>Garage de <%= garage.capacity %>m2</h2>
+    <img style="width:200px;" src="<%= garage.photo %>"/>
+    <p><%= garage.location %></p>
+    <p><%= garage.price %>*/mois - <%= garage.description %></p>
+    <%= link_to "Plus d'infos", garage_path(garage) %>
   <% end %>
-
-  <p><%= garage.price %>€/mois - <%= garage.description %></p>
 </div>
-<% end %>
