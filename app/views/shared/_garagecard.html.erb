@@ -1,0 +1,16 @@
+<div class="card-garage">
+  <%= cl_image_tag garage.photo, crop: :fill %>
+  <div class="card-garage-infos">
+    <div>
+      <h2><%= garage.description %> de <%= garage.capacity %>m2</h2>
+      <br>
+      <p><%= garage.price %>*/mois situé <%= garage.location %> </p>
+    </div>
+    <div class="loue-par">
+      <p>loué par Rémy</p>
+      <br>
+      <p><%= link_to "Plus d'infos", garage_path(garage) %></p>
+    </div>
+
+  </div>
+</div>

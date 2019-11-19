@@ -1,0 +1,60 @@
+.card-garage img {
+  height: 100%;
+  width: 150px;
+  object-fit: cover;
+}
+
+.photo-garage {
+  width:200px;
+
+  background-size: cover;
+  background-position: center;
+  height: 150px;
+  border-radius: 1px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  display: flex;
+  // align-items: center;
+  // justify-content: space-around;
+  font-size: 22px;
+  color: white;
+  font-weight: bolder;
+  text-shadow: 0 0 10px rgba(0,0,0,0.7);
+}
+
+.card-garage {
+  overflow: hidden;
+  height: 150px;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  display: flex;
+  // align-items: center;
+}
+
+.card-garage h2 {
+  font-size: 17px;
+  font-weight: bold;
+  margin: 0;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.card-garage p {
+  font-size: 16px;
+  // line-height: 1.4;
+  opacity: .7;
+  margin-bottom: 0;
+  margin-top: 8px;
+  // height: 200px;
+}
+
+.card-garage-infos {
+  padding: 16px;
+  flex-grow: 1;
+  display: flex;
+  justify-content: space-between;
+}
+
+.loue-par {
+  text-align: right;
+  padding-right: 15px;
+}
