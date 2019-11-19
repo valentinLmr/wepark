@@ -1,11 +1,11 @@
-
-<%= simple_form_for @garage do |f| %>
-<%= f.input :capacity %>
-<%= f.input :price %>
-<%= f.input :description %>
-<%= f.input :location %>
-<%= f.input :photo %>
-<%= f.input :photo_cache, as: :hidden %>
-<%= f.submit "add garage" %>
-<% end  %>
-
+<div class="container">
+  <%= simple_form_for @garage do |f| %>
+  <%= f.input :capacity %>
+  <%= f.input :price %>
+  <%= f.input :description %>
+  <%= f.input :location %>
+  <%= f.input :photo %>
+  <%= f.input :photo_cache, as: :hidden %>
+  <%= f.submit "add garage" %>
+  <% end  %>
+</div>
