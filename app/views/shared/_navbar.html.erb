@@ -1,5 +1,5 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <%= link_to "#", class: "navbar-brand" do %>
+  <%= link_to "/", class: "navbar-brand" do %>
     <%= image_tag "https://www.mobnews.fr/wp-content/uploads/2016/09/nuq7soqv_400x400.jpg" %>
   <% end %>
 
@@ -11,13 +11,13 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto d-flex align-items-center">
       <li class="nav-item active">
-        <%= link_to "Connexion", , class: "nav-link" %>
+        <%= link_to "Connexion", new_user_session_path, class: "nav-link" %>
       </li>
       <li class="nav-item">
-        <%= link_to "S'inscrire", "#2", class: "nav-link" %>
+        <%= link_to "S'inscrire", new_user_registration_path, class: "nav-link" %>
       </li>
       <li class="nav-item">
-        <%= link_to "Des questions ?", "#2", class: "nav-link" %>
+        <%= link_to "Des questions ?", root_path, class: "nav-link" %>
       </li>
       <li class="nav-item dropdown mx-2">
         <%= link_to "PROPOSER VOTRE GARAGE", "#", class: "nav-item"%>
