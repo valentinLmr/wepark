@@ -26,11 +26,7 @@
       <div class="info-proprietaire my-3 mb-3" style="text-align: center; background-color: white; border-radius: 10px;">
         <h3 style="text-align: center;" class="py-2">Réserver en ligne</h3>
         <div class="mx-2 mb-2">
-          <%= simple_form_for [@garage, @rental] do |f| %>
-            <%= f.input :start_date %>
-            <%= f.input :end_date %>
-            <%= f.submit %>
-          <% end %>
+          <%= link_to 'louer le  garage', new_garage_rental_path(@garage), class: 'btn btn-warning mb-3' %>
           <br>
         </div>
       </div>
