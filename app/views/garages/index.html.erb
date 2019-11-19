@@ -1,6 +1,6 @@
 <div class="row flex">
 
-    <div class="col-6 garages-list">
+    <div class="col-7 garages-list">
       <h1>Voici tous les garages</h1>
 
         <% @garages.each do |garage| %>
@@ -11,7 +11,7 @@
 
     </div>
 
-    <div class="col-6 map-box">
+    <div class="col-5 map-box">
         <%= cl_image_tag "https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/2.3381,48.8693,10.45,0,0/600x1000?access_token=MAPTOKEN", crop: :fill %>
     </div>
 </div>

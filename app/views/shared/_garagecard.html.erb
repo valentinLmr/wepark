@@ -3,13 +3,13 @@
   <div class="card-garage-infos">
     <div>
       <h2><%= garage.description %> de <%= garage.capacity %>m2</h2>
-      <br>
-      <p><%= garage.price %>*/mois situé <%= garage.location %> </p>
+      <p>situé à <%= garage.city %> </p>
+      <p><%= garage.location %> pour <%= garage.price %>*/mois</p>
     </div>
     <div class="loue-par">
-      <p>loué par Rémy</p>
+      <p>proposé par <%= garage.user.first_name %></p>
       <br>
-      <p><%= link_to "Plus d'infos", garage_path(garage) %></p>
+      <p><%= link_to "Plus d'infos", garage_path(garage), class: "btn orange" %></p>
     </div>
 
   </div>
