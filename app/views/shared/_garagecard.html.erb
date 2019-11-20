@@ -4,7 +4,7 @@
     <div>
       <h2><%= garage.description %> de <%= garage.capacity %>m2</h2>
       <p>situé à <%= garage.city %> </p>
-      <p><%= garage.location %> pour <strong><%= garage.price %>€/mois</strong></p>
+      <p><%= garage.location %> pour <strong><%= garage.price %>€/mois</strong> <%= render 'shared/stars', note: average(garage) %></p>
     </div>
     <div class="loue-par">
       <p>proposé par <%= garage.user.first_name %></p>
