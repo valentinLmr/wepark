@@ -1,15 +1,12 @@
 
-
-
-
 <div class="container" style="min-height: 80vh;">
   <div class="row">
     <div class="col-sm-12 col-md-6 col-lg-6 mt-3 py-3" style="background-color: white;">
       <div class="form-wrapper" style="width: 400px; margin: 0 auto;">
         <h1><strong>Votre Location</strong></h1>
         <div class="date">
-        <p> <strong>From</strong>: <%= @rental.start_date %> </p>
-        <p> <strong>To</strong>:   <%= @rental.end_date %> </p>
+        <p> <strong>Du</strong>: <%= @rental.start_date %> </p>
+        <p> <strong>Au</strong>:   <%= @rental.end_date %> </p>
         </div>
 
         <div class="info">
@@ -17,7 +14,7 @@
             <h3>Propriétaire:</h3>
             <p><i class="fas fa-user-check"></i>   <%= @garage.user.first_name %></p>
             <p><i class="fas fa-phone"></i>     <%= @garage.user.phone_number %></p>
-            <p><i class="fas fa-compass"></i>     <%= @garage.location %></p>
+            <p><i class="fas fa-compass"></i>     <%= @garage.location %>, <%= @garage.city %></p>
           </div>
 
           <div class="price">
@@ -27,7 +24,8 @@
       </div>
     </div>
 
-    <div class="col-sm-12 col-md-6 col-lg-6 mt-3 py-3" style="background-color: white; text-align: center;">
-        <img class="mb-2" style="width:450px; border-radius: 10px;" src="<%= @garage.photo %>" />
+    <div class="col-sm-12 col-md-6 col-lg-6 mt-3 py-4" style="background-color: white; text-align: center;">
+      <%= cl_image_tag(@garage.photo, width: 450, height: 250, crop: :fill) %>
+      <%= link_to 'Mon dashboard', dashboard_path, class: 'btn btn-primary mt-4' %>
     </div>
 </div>
