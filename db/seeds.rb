@@ -29,25 +29,25 @@ puts "Creating new garages"
 first_user = User.first
 last_user = User.last
 
-g = Garage.create!(user: first_user, capacity: 10, price: 50, location: "01 rue kleber 59100", city: 'Marcq', description: "Grand Garage")
+g = Garage.create!(user: first_user, capacity: 10, price: 50, location: "01 rue kleber", city: 'Marcq', description: "Grand Garage")
 g.remote_photo_url = "https://media.gettyimages.com/photos/garage-picture-id528098460?s=612x612"
 g.save!
-g = Garage.create!(user: first_user, capacity: 6, price: 30, location: "18 rue mouscron 59150", city: 'Watrelos', description: "Magnifique Garage éclairé avec fenetere")
+g = Garage.create!(user: first_user, capacity: 6, price: 30, location: "18 rue mouscron", city: 'Wattrelos', description: "Magnifique Garage éclairé avec fenetere")
 g.remote_photo_url = "https://www.degarageamersfoort.nl/userfiles/images/mbo_garage_bg_1.jpg"
 g.save!
-g = Garage.create!(user: last_user, capacity: 7, price: 30, location: "99 rue kleber 59420", city: 'Mouvaux', description: "Petit Garage plein nord")
+g = Garage.create!(user: last_user, capacity: 7, price: 30, location: "99 rue kleber", city: 'Mouvaux', description: "Petit Garage plein nord")
 g.remote_photo_url = "https://www.ctm-renovation.fr/wp-content/uploads/2016/04/construire-un-garage.jpg"
 g.save!
-g = Garage.create!(user: last_user, capacity: 6, price: 10, location: "98 rue kleber 59170", city: 'Croix', description: "Magnifique Garage plein sud")
+g = Garage.create!(user: last_user, capacity: 6, price: 10, location: "98 rue kleber", city: 'Croix', description: "Magnifique Garage plein sud")
 g.remote_photo_url = "https://www.steeltechsheds.ie/wp-content/gallery/garages-2017/26ft-x-17ft-garage.jpg"
 g.save!
-g = Garage.create!(user: first_user, capacity: 10, price: 100, location: "28 rue kleber 59290", city: 'Wasquehal', description: "Nouveau Garage en brique rouge")
+g = Garage.create!(user: first_user, capacity: 10, price: 100, location: "28 rue kleber", city: 'Wasquehal', description: "Nouveau Garage en brique rouge")
 g.remote_photo_url = "https://www.sgauto-16.fr/userfiles/7066/garage-SG-Auto.jpg"
 g.save!
-g = Garage.create!(user: last_user, capacity: 12, price: 20, location: "108 rue kleber 59110", city: 'La Madeleine', description: "Toujours un Garage mal exposé")
+g = Garage.create!(user: last_user, capacity: 12, price: 20, location: "108 rue kleber", city: 'La Madeleine', description: "Toujours un Garage mal exposé")
 g.remote_photo_url = "https://www.ctm-renovation.fr/wp-content/uploads/2016/04/construire-un-garage.jpg"
 g.save!
-g = Garage.create!(user: first_user, capacity: 8, price: 30, location: "12 rue nationale 59800", city: 'Lille', description: "Encore un Garage bien isolé")
+g = Garage.create!(user: first_user, capacity: 8, price: 30, location: "12 rue nationale", city: 'Lille', description: "Encore un Garage bien isolé")
 g.remote_photo_url = "https://www.degarageamersfoort.nl/userfiles/images/mbo_garage_bg_1.jpg"
 g.save!
 
