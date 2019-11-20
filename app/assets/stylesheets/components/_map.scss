@@ -6,3 +6,30 @@
   position: sticky !important;
   top: 0px;
 }
+
+// rajoute pour l info windows
+// app/assets/stylesheets/components/_map.scss
+
+.mapboxgl-popup {
+  max-width: 200px;
+  max-height: 200px;
+  border-radius: 30px !important;
+}
+
+.mapboxgl-popup-content {
+  text-align: center;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 15px;
+}
+
+.map-info-photo img {
+  height: 200px  !important;
+  width: 200px !important;
+  // object-fit: cover;
+}
+
+.info-prix {
+  display:flex;
+  justify-content: space-between;
+}
+

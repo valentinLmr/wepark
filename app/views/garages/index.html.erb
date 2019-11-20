@@ -1,12 +1,8 @@
 <div class="row d-flex mx-3 my-3">
 
-    <div class="col-7 garages-list">
-
-        <% markers = [] %>
+    <div class="col-6 garages-list ml-3">
 
         <% @garages.each do |garage| %>
-
-          <%  markers << { lat: garage.latitude, lng: garage.longitude } %>
 
           <%= render 'shared/garagecard', garage: garage %>
 
@@ -15,7 +11,7 @@
     </div>
     <div id="map"
          class="olimap"
-         data-markers="<%= markers.to_json %>"
+         data-markers="<%= @markers.to_json %>"
          data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
     ></div>
 </div>
