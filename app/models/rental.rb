@@ -6,8 +6,6 @@ class Rental < ApplicationRecord
 
   # end_date_after_start_date, :validate_each
 
-
-
   # validates :check_date
   # validates :start_date, :end_date, presence: true
 
@@ -42,3 +40,4 @@ class Rental < ApplicationRecord
   #   end
   # end
 end
+
