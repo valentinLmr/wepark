@@ -29,7 +29,9 @@ class GaragesController < ApplicationController
 
   def show
     @garage = Garage.find(params[:id])
+    @reviews = Review.where(garage_id: @garage.id)
     authorize(@garage)
+    # @reviews.rating
   end
 
   def edit
@@ -57,4 +59,6 @@ class GaragesController < ApplicationController
   def garage_params
     params.require(:garage).permit(:capacity, :price, :description, :location, :photo, :search, :city)
   end
+
+
 end
