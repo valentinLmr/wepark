@@ -8,6 +8,7 @@ class GaragesController < ApplicationController
     else
       @garages = Garage.all
     end
+    @markers = get_markers(@garages)
   end
 
   def new
@@ -53,6 +54,19 @@ class GaragesController < ApplicationController
   end
 
   private
+
+  def get_markers(garages)
+    # recup garages with valid coordinates
+    # @geocoded_garages = garages.geocoded
+    @geocoded_garages = Garage.all
+
+    @markers = @geocoded_garages.map do |garage|
+      {
+        lat: garage.latitude,
+        lng: garage.longitude
+      }
+    end
+  end
 
   def garage_params
     params.require(:garage).permit(:capacity, :price, :description, :location, :photo, :search, :city)
