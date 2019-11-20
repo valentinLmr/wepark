@@ -2,12 +2,11 @@
   <%= cl_image_tag garage.photo, crop: :fill %>
   <div class="card-garage-infos">
     <div>
-      <h2><%= garage.description %> de <%= garage.capacity %>m2</h2>
-      <p>situé à <%= garage.city %> </p>
+      <h2 style="text-align: left;">Garage de <%= garage.capacity %>m2 à <%= garage.city %></h2>
       <p><%= garage.location %> pour <strong><%= garage.price %>€/mois</strong> <%= render 'shared/stars', note: average(garage) %></p>
     </div>
     <div class="loue-par">
-      <p>proposé par <%= garage.user.first_name %></p>
+      <p><%= garage.user.first_name %> est votre propriétaire</p>
       <br>
       <p><%= link_to "Plus d'infos", garage_path(garage), class: "btn orange" %></p>
     </div>
