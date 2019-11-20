@@ -2,10 +2,12 @@ class GaragesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-    # @garages = Garage.all
     @garages = policy_scope(Garage)
-    @garages = Garage.search(params[:search])
-    @list
+    if params[:query].present?
+      @garages = Garage.where(city: params[:query])
+    else
+      @garages = Garage.all
+    end
   end
 
   def new

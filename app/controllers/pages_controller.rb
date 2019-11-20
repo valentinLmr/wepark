@@ -1,24 +1,11 @@
 class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: :home
 
-
-
-def search
-  if params[:search].blank?
-    redirect_to(root_path, alert: "Empty field!") and return
-  else
+  def search
     @parameter = params[:search].downcase
     @results = Garage.all.where("lower(name) LIKE :search", search: @parameter)
+  end
 end
-
-
-
-
-
-
-
-
-
 
 #   def home
 #     index
@@ -28,4 +15,3 @@ end
 #     @garages = Garage.search(params[:search])
 #     @list
 #   end
-# end
