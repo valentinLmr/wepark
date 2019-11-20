@@ -3,7 +3,7 @@
   <div class="card-garage-infos">
     <div>
       <h2 style="text-align: left;">Garage de <%= garage.capacity %>m2 à <%= garage.city %></h2>
-      <p><%= garage.location %> pour <strong><%= garage.price %>€/mois</strong> <%= render 'shared/stars', note: average(garage) %></p>
+      <p><%= garage.location %><br><strong><%= garage.price %>€/mois</strong> <%= render 'shared/stars', note: average(garage) %></p>
     </div>
     <div class="loue-par">
       <p><%= garage.user.first_name %> est votre propriétaire</p>
