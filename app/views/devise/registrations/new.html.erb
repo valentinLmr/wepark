@@ -15,6 +15,8 @@
                   required: true %>
       <%= f.input :phone_number, label: 'Numéro de téléphone',
                   required: true %>
+      <%= f.input :photo %>
+      <%= f.input :photo_cache, as: :hidden %>
       <%= f.input :email,
                   required: true,
                   input_html: { autocomplete: "email" }%>
