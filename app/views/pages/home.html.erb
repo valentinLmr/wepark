@@ -1,18 +1,12 @@
 <div class="full-screen">
   <%= render 'shared/banner' %>
     <div class="container">
-       <%= form_tag garages_path, method: :get do %>
-       <%= text_field_tag :query,
-        params[:query],
-        class: "form-control",
-        placeholder: "Find garage"%>
-       <%= submit_tag "Search", class: "btn btn-primary" %>
-  <% end %>
+
 
     <%= render 'shared/explain' %>
 
   </div>
-  <%= render 'shared/caroussel' %>
+
 </div>
-<%= render 'shared/accreditation' %>
+
 
