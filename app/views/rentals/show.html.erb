@@ -8,9 +8,10 @@
       <div class="form-wrapper" style="width: 400px; margin: 0 auto;">
         <h1><strong>Votre Location</strong></h1>
         <div class="date">
-        <p> From :<%= @rental.start_date %> </p>
-        <p> To: <%= @rental.end_date %> </p>
+        <p> <strong>From</strong>: <%= @rental.start_date %> </p>
+        <p> <strong>To</strong>:   <%= @rental.end_date %> </p>
         </div>
+
         <div class="info">
           <div class="proprio">
             <h3>Propriétaire:</h3>
@@ -18,9 +19,10 @@
             <p><i class="fas fa-phone"></i>     <%= @garage.user.phone_number %></p>
             <p><i class="fas fa-compass"></i>     <%= @garage.location %></p>
           </div>
-        <div class="price">
-          <strong><%= @garage.price %>€/mois</strong>
-        </div>
+
+          <div class="price">
+            <strong><%= @garage.price %>€/mois</strong>
+          </div>
         </div>
       </div>
     </div>

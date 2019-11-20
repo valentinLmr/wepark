@@ -7,6 +7,9 @@ Rails.application.routes.draw do
     resources :rentals, only:[:show, :new, :create]
   end
 
+
+get '/search' => 'pages#search', :as => 'search_page'
+
   resources :rentals, only: [:destroy, :show]
 
   get '/dashboard', to: 'profiles#dashboard'

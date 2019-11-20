@@ -4,6 +4,8 @@ class GaragesController < ApplicationController
   def index
     # @garages = Garage.all
     @garages = policy_scope(Garage)
+    @garages = Garage.search(params[:search])
+    @list
   end
 
   def new
@@ -51,6 +53,6 @@ class GaragesController < ApplicationController
   private
 
   def garage_params
-    params.require(:garage).permit(:capacity, :price, :description, :location, :photo)
+    params.require(:garage).permit(:capacity, :price, :description, :location, :photo, :search)
   end
 end

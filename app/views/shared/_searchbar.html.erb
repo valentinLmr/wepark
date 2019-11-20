@@ -1,4 +1,35 @@
-<div class = "search-bar mt-5 p-3 p-lg-1 pl-lg-4 mb-5">
+
+
+<h4>Villes</h4>
+  <%= form_tag(garages_path, method: :get) do %>
+    <%= text_field_tag(:search, params[:search]) %>
+    <%= submit_tag("search") %>
+  <% end %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div class = "search-bar mt-5 p-3 p-lg-1 pl-lg-4 mb-5">
   <form action="#">
     <div class = "row d-flex align-items-center">
 
@@ -21,4 +52,4 @@
   </form>
 
 </div>
-
+ -->

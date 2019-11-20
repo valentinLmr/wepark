@@ -7,6 +7,17 @@ class Garage < ApplicationRecord
   validates :location, presence: true
   validates :description, presence: true
 
+  def self.search(search)
+    p search
+
+    town = Garage.find(city: search)
+
+    if town
+      Garage.select(town)
+    else
+      Garage.all
+    end
+  end
 
   def next_bookings
     Rental.where("garage_id = ? AND end_date > ?", self.id, Date.today)
