@@ -19,7 +19,7 @@
       <!-- Line below will not work on Heroku. -->
       <!-- Please use Cloudinary Image Tag -->
       <!-- <img class="mb-2" style="width:300px; border-radius: 10px;" src="<%#= @garage.photo %>" /> -->
-      <%= cl_image_tag(@garage.photo, width: 300, height: 300, crop: :fill) %>
+      <%= cl_image_tag(@garage.photo, width: 300, height: 200, crop: :fill) %>
       <p>Garage de <%= @garage.capacity %>m2 à <%= @garage.city %> - <%= @garage.price %>€/mois</p>
     </div>
 </div>
