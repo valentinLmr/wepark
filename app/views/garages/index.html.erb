@@ -1,7 +1,6 @@
-<div class="row flex">
+<div class="row d-flex mx-3 my-3">
 
-    <div class="col-7 garages-list ml-3">
-      <h1>Voici tous les garages</h1>
+    <div class="col-6 garages-list ml-3">
 
         <% @garages.each do |garage| %>
 
@@ -10,9 +9,9 @@
         <% end %>
 
     </div>
-    <% markers = [{ lat: 50.706768, lng: 3.222024 }] %>
-    <div id="map" class="map col-5 map-box" data-markers="<%= markers.to_json %>"
-      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+    <div id="map"
+         class="olimap"
+         data-markers="<%= @markers.to_json %>"
+         data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
     ></div>
 </div>
-
