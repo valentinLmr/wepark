@@ -21,7 +21,7 @@
       <div class="info-proprietaire my-3 mb-3" style="text-align: center; background-color: white; border-radius: 10px;">
         <h3 style="text-align: center;" class="py-2">Proprétaire</h3>
         <p class="mx-3"><%= @garage.user.first_name %> <%= @garage.user.last_name %></p>
-        <a class="btn btn-primary mb-3" style="border-radius: 10px;" href="<%= @garage.user.email %>">Contacter le propriétaire</a>
+        <a class="btn btn-primary mb-3" style="border-radius: 10px;" href="mailto:<%= @garage.user.email %>">Contacter le propriétaire</a>
       </div>
       <div class="info-proprietaire my-3 mb-3" style="text-align: center; background-color: white; border-radius: 10px;">
         <h3 style="text-align: center;" class="py-2">Réserver en ligne</h3>

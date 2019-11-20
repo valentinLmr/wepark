@@ -7,11 +7,11 @@
   </div>
 
   <div class="middle-card ml-4">
-    <h5><strong>Informations concernant votre location :</strong></h5>
     <p><strong>Prix mensuel :</strong> <%= rental.garage.price %>€</p>
     <p><strong>Adresse :</strong> <%= rental.garage.location %> <%= rental.garage.city %></p>
     <p><strong>Du :</strong> <%= rental.start_date %></p>
     <p><strong>Au :</strong> <%= rental.end_date %></p>
+    <p><strong>Contact propriétaire :</strong> <%= rental.garage.user.phone_number %> </p>
   </div>
 
   <div class="right-card mr-3">
