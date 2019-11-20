@@ -1,23 +1,28 @@
-<div class="container">
+  <div class="form-login">
+  <div class="row"style=" text-align: center; margin: auto;">
+    <div class="col-12 col-sm-offset-4 px-4">
 
   <%= simple_form_for @garage do |f| %>
     <div class="etape active">
       <%= f.input :description %>
-      <%= f.input :capacity %>
-      <%= f.input :price %>
-      <div class="next btn btn-primary">Next step</div>
+      <%= f.input :capacity, label: 'Surface en m2' %>
+      <%= f.input :price, label: 'Prix (/mois)' %>
+      <div class="next btn btn-primary">Prochaine étape</div>
     </div>
 
     <div class="etape">
       <%= f.input :photo %>
       <%= f.input :photo_cache, as: :hidden %>
-      <div class="next btn btn-primary">Next step</div>
+      <div class="next btn btn-primary">Prochaine étape</div>
     </div>
 
     <div class="etape">
-        <%= f.input :location %>
-        <%= f.input :city %>
-        <%= f.submit "add garage" %>
+        <%= f.input :location, label: 'N° et nom de rue' %>
+        <%= f.input :city, label: 'Ville' %>
+        <%= f.submit "Ajouter ce garage" %>
     </div>
   <% end  %>
+
+    </div>
+  </div>
 </div>
