@@ -2,8 +2,8 @@ class RentalsController < ApplicationController
   skip_before_action :authenticate_user!, only: :show
 
   def show
-    @garage = Garage.find(params[:id])
     @rental = Rental.find(params[:id])
+    @garage = @rental.garage
   end
 
   def new
