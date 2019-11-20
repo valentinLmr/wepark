@@ -1,6 +1,6 @@
 <div class="d-flex carddd mt-3 d-flex align-items-center justify-content-between">
 
-  <div class="left-card ml-4" style="text-align: center;">
+  <div class="left-card ml-4 pt-3" style="text-align: center;">
       <h5>Garage de <%= garage.capacity %>m2 à <%= garage.city %></h5>
       <img class="mb-2" src="<%= garage.photo %>" />
       <p><%= garage.price %>€/mois</p>
@@ -20,9 +20,10 @@
     <% end %>
   </div>
 
-  <div class="right-card mr-3" style="text-align: center;">
-    <%= link_to 'Editer ce garage', edit_garage_path(garage), class: 'btn btn-warning mb-3' %> <br>
-    <%= link_to 'Supprimer ce garage', garage_path(garage), method: :delete, data: { confirm: "Etes-vous certains ?"}, class: 'btn btn-danger' %>
+  <div class="right-card mr-3 d-flex">
+    <div><%= link_to 'Voir mon annonce', garage_path(garage), class: 'btn btn-primary mb-3' %></div>
+    <div><%= link_to 'Editer cette annonce', edit_garage_path(garage), class: 'btn btn-warning mb-3' %></div>
+    <div><%= link_to 'Supprimer cette annonce', garage_path(garage), method: :delete, data: { confirm: "Etes-vous certains ?"}, class: 'btn btn-danger' %></div>
   </div>
 
 </div>
