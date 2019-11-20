@@ -7,10 +7,6 @@ class Rental < ApplicationRecord
   # end_date_after_start_date, :validate_each
 
   # validates :check_date
-  # validates :start_date, :end_date, presence: true
-
-  # validates :end_date, presence: true
-  # validates :start_date, presence: true
 
   # def end_date_after_start_date
   #   # return "" if end_date.blank? || start_date.blank?

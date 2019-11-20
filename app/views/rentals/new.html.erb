@@ -2,22 +2,29 @@
   <div class="row">
     <div class="col-sm-12 col-md-6 col-lg-6 mt-3 py-3" style="background-color: white;">
       <div class="form-wrapper" style="width: 400px; margin: 0 auto;">
-        <h4>Sélectionnez vos dates de location</h4>
-        <div id="rental-form-div" data-rentals="<%= @rental_dates.to_json %>">
-          <%= simple_form_for [@garage, @rental] do |f| %>
-            <%= f.input :start_date, as: :string, required: false, input_html: {id: "start-date"} %>
-            <%= f.input :end_date, as: :string, required: false, input_html: {id: "end-date"} %>
-            <%= f.button :submit, "C'est parti !", class: "btn btn-primary" %>
-          <% end %>
-        </div>
+        <h4>
+          Sélectionnez vos dates de location
+        </h4>
+        <%= simple_form_for [@garage, @rental] do |f| %>
+          <%= f.input :start_date, label: "Date de début :", as: :string, required: false, input_html: {id: "start-date"} %>
+          <%= f.input :end_date, label: "Date de fin :", as: :string, required: false, input_html: {id: "end-date"} %>
+          <%= f.button :submit, "Reserver !", class: "btn btn-primary" %>
+        <% end %>
       </div>
     </div>
 
+
     <div class="col-sm-12 col-md-6 col-lg-6 mt-3 py-3" style="background-color: white; text-align: center;">
       <h4>Rappel de votre réservation :</h4>
-        <img class="mb-2" style="width:300px; border-radius: 10px;" src="<%= @garage.photo %>" />
-        <p>Garage de <%= @garage.capacity %>m2 à <%= @garage.city %> - <%= @garage.price %>€/mois</p>
+      <!-- Line below will not work on Heroku. -->
+      <!-- Please use Cloudinary Image Tag -->
+      <!-- <img class="mb-2" style="width:300px; border-radius: 10px;" src="<%#= @garage.photo %>" /> -->
+      <%= cl_image_tag(@garage.photo, width: 300, height: 200, crop: :fill) %>
+      <p>Garage de <%= @garage.capacity %>m2 à <%= @garage.city %> - <%= @garage.price %>€/mois</p>
     </div>
 </div>
 
-
+<div
+  id="rental-form-div"
+  data-rentals="<%= @rental_dates.to_json %>">
+</div>
