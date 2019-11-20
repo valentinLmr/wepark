@@ -49,11 +49,12 @@
 
         <% @reviews.each do |review| %>
           <div class="review">
+            <%= cl_image_tag review.user.photo, height: 50, width: 50, crop: :fill, radius:50 %>
             <p><%= review.content %></p>
             <div class="trait"></div>
           </div>
         <% end %>
-        <div><%= link_to 'Ajouter une review', new_garage_review_path(@garage), class: 'btn btn-primary' %></div>
+        <div><%= link_to 'Ajouter une review', new_garage_review_path(@garage), class: 'btn btn-primary my-2' %></div>
       </div>
 
 
@@ -63,9 +64,5 @@
   <% if policy(@garage).edit? %>
     <%= render '/shared/edit-garage-on-show' %>
   <% end %>
-  Garage rating: <%= average(@garage) %>
-
-
-
 
 </div>
