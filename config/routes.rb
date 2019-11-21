@@ -16,4 +16,8 @@ Rails.application.routes.draw do
   #resources :reviews
 
   get '/dashboard', to: 'profiles#dashboard'
+
+  resources :orders, only: [:show, :create]do
+    resources :payments, only: :new
+  end
 end

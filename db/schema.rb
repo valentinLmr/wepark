@@ -10,14 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_21_112318) do
+ActiveRecord::Schema.define(version: 2019_11_21_142709) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "garages", force: :cascade do |t|
     t.integer "capacity"
-    t.integer "price"
     t.text "description"
     t.string "location"
     t.string "photo"
@@ -29,7 +28,21 @@ ActiveRecord::Schema.define(version: 2019_11_21_112318) do
     t.float "longitude"
     t.integer "postale"
     t.string "full_address"
+    t.integer "price_cents", default: 0, null: false
     t.index ["user_id"], name: "index_garages_on_user_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.string "state"
+    t.integer "amount_cents", default: 0, null: false
+    t.string "amount_currency", default: "EUR", null: false
+    t.string "checkout_session_id"
+    t.bigint "user_id"
+    t.bigint "garage_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["garage_id"], name: "index_orders_on_garage_id"
+    t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
   create_table "rentals", force: :cascade do |t|
@@ -71,6 +84,8 @@ ActiveRecord::Schema.define(version: 2019_11_21_112318) do
   end
 
   add_foreign_key "garages", "users"
+  add_foreign_key "orders", "garages"
+  add_foreign_key "orders", "users"
   add_foreign_key "rentals", "garages"
   add_foreign_key "rentals", "users"
   add_foreign_key "reviews", "garages"
