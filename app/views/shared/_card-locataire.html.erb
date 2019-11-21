@@ -22,7 +22,9 @@
       </div>
     </div>
   <div class="annuler">
-    <%= link_to '(X)', rental_path(rental), method: :delete, data: { confirm: "Souhaitez-vous vraiment annuler cette réservation ?" } %>
+    <%= link_to rental_path(rental), method: :delete, data: { confirm: "Souhaitez-vous vraiment annuler cette réservation ?" } do %>
+      <i class="far fa-window-close px-1"></i>
+    <% end %>
   </div>
   </div>
 </div>
