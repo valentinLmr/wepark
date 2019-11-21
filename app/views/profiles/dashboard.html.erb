@@ -2,7 +2,7 @@
 <h2>Bienvenue dans votre dashboard <%= current_user.first_name %></h2>
 
 <div class="dashboard-proprietaire py-3 mt-4">
-  <div class="d-flex justify-content-between">
+  <div class=" top-div d-flex justify-content-between">
     <h3>Vos garages en tant que propriétaire</h3>
     <div><%= link_to 'Ajouter un garage', new_garage_path, class: 'btn btn-primary' %></div>
   </div>
@@ -18,7 +18,7 @@
 </div>
 
 <div class="dashboard-locataire py-3 mt-4">
-  <div class="d-flex justify-content-between">
+  <div class="top-div d-flex justify-content-between">
     <h3>Vos garages en tant que locataire</h3>
     <div><%= link_to 'Réserver un nouveau garage', garages_path(@garages), class: 'btn btn-primary' %></div>
   </div>
