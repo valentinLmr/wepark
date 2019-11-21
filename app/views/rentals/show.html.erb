@@ -26,12 +26,12 @@
 
     <div class="col-sm-12 col-md-6 col-lg-6 mt-3 py-4" style="background-color: white; text-align: center;">
       <%= cl_image_tag(@garage.photo, width: 450, height: 250, crop: :fill) %>
-      <%= link_to 'Mon dashboard', dashboard_path, class: 'btn btn-primary mt-4' %>
+      <%= form_tag orders_path do %>
+        <%= hidden_field_tag 'garage_id', @garage.id %>
+        <%= submit_tag 'Purchase', class: 'btn btn-primary' %>
+      <% end %>
     </div>
 
-    <%= form_tag orders_path do %>
-  <%= hidden_field_tag 'garage_id', @garage.id %>
-  <%= submit_tag 'Purchase', class: 'btn btn-primary' %>
-<% end %>
+
 
 </div>
