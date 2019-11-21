@@ -28,6 +28,7 @@ class GaragesController < ApplicationController
     @garage = Garage.new(garage_params)
     @garage.user = current_user
     authorize(@garage)
+    garage.full_address = garage.location + garage.postale + garage.city
 
     if @garage.save
       redirect_to garages_path
