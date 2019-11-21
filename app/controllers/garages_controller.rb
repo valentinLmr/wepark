@@ -17,7 +17,7 @@ class GaragesController < ApplicationController
         adresse += adresse + ', ' + params[:city]
         @garages = Garage.where('capacity >= ? AND price <= ?', surface, price).near(adresse, rayon).order("price ASC")
       else
-        @garages = Garage.where('city ILIKE ? AND capacity >= ? AND price <= ?', "%#{params[:city]}%", surface, price).order("created_at ASC")
+        @garages = Garage.where('city ILIKE ? AND capacity >= ? AND price <= ?', "%#{params[:city]}%", surface, price).order("price ASC")
       end
     else
       @garages = Garage.all.order("created_at ASC")
