@@ -44,9 +44,11 @@
         </div>
       </div>
 
-      <div class="info-reviews my-3 mb-3" style="text-align: center; background-color: white; border-radius: 10px;">
+      <div class="info-reviews my-3 mb-3" style="text-align: center; background-color: white; border-radius: 10px; min-height: 100px;">
         <h3 style="text-align: center;" class="py-2">Avis</h3>
-
+        <% if @reviews == [] %>
+        <p>Aucun avis pour le moment</p>
+        <% else %>
         <% @reviews.each do |review| %>
           <div class="review">
             <%= cl_image_tag review.user.photo, height: 50, width: 50, crop: :fill, radius:50 %>
@@ -55,7 +57,10 @@
             <div class="trait"></div>
           </div>
         <% end %>
+        <% end %>
+        <% if @garage.display_add_review_form(current_user) %>
         <div><%= link_to 'Ajouter une review', new_garage_review_path(@garage), class: 'btn btn-primary my-2' %></div>
+        <% end %>
       </div>
 
 

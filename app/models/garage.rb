@@ -14,4 +14,8 @@ class Garage < ApplicationRecord
   def next_bookings
     Rental.where("garage_id = ? AND end_date > ?", self.id, Date.today)
   end
+
+  def display_add_review_form(user)
+    user.rentals.select { |rental| rental.start_date <= Date.today }.map(&:garage).include?(self)
+  end
 end
