@@ -1,0 +1,12 @@
+<div class="form-login">
+  <div class="row"style=" text-align: center; margin: auto;">
+    <div class="col-12 col-sm-offset-4 px-4">
+      <h4>Votre avis sur le garage de <%= @garage.user.first_name %></h4><br>
+         <%= simple_form_for [@garage, @review] do |f| %>
+              <%= f.input :content, label: 'Votre avis détaillé :' %>
+              <%= f.input :rating, label: 'Votre note sur 5 :' %>
+              <%= f.submit "Soumettre" %>
+          <% end  %>
+    </div>
+  </div>
+</div>
