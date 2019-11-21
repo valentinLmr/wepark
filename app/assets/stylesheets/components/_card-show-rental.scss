@@ -4,12 +4,13 @@
 }
 
 .date p {
-    font-size: 24px;
+    font-size: 15px;
     margin-top: 10px;
 
 }
 
 .info {
+  margin-left: 110px;
   // display: flex;
   // position: relative;
 }
@@ -18,16 +19,9 @@
   // display: flex;
   // position: relative;
   color: #329AF0;
+
 }
 
-.price {
-    right: -84px;
-    font-size: 46px;
-    // position: absolute;
-    bottom: 32px;
-    color: #329AF0;
-    margin-left: 100px;
-}
 
 .form-wrapper h1 {
   color: #329AF0;
@@ -36,4 +30,10 @@
 
 .proprio {
   text-align: center
+}
+
+.annuler {
+  position: absolute;
+      top: 0px;
+    right: 0px;
 }
