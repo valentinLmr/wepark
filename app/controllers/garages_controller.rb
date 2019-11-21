@@ -9,7 +9,7 @@ class GaragesController < ApplicationController
       params[:rayon].present? ? rayon = params[:rayon].to_i : rayon = 0
 
       params[:surface].present? ? surface = params[:surface].to_i : surface = 0
-      params[:price_cents].present? ? price = params[:price_cents].to_i : price = 1000
+      params[:price_cents].present? ? price = params[:price_cents].to_i * 100 : price = 100_000
 
       if params[:city] == ""
         @garages = Garage.where('capacity >= ? AND price_cents <= ?', surface, price).order("price_cents ASC")
