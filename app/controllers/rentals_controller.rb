@@ -27,7 +27,8 @@ class RentalsController < ApplicationController
     @rental.garage = @garage
 
     if @rental.save
-      redirect_to rental_path(@rental)
+      create_an_order
+      redirect_to new_order_payment_path(@order)
     else
       render :new
     end
@@ -45,4 +46,22 @@ class RentalsController < ApplicationController
     params.require(:rental).permit(:start_date, :end_date)
   end
 
+  def create_an_order
+    @order = Order.create!(rental: @rental, amount: @garage.price_cents, state: 'pending', user: current_user)
+
+    session = Stripe::Checkout::Session.create(
+      payment_method_types: ['card'],
+      line_items: [{
+        name: @garage.location,
+        images: [@garage.photo],
+        amount: @garage.price_cents,
+        currency: 'eur',
+        quantity: 1
+      }],
+      success_url: order_url(@order),
+      cancel_url: order_url(@order)
+    )
+
+    @order.update(checkout_session_id: session.id)
+  end
 end

@@ -1,7 +1,8 @@
 class OrdersController < ApplicationController
   def create
-    garage = Garage.find(params[:garage_id])
-    order = Order.create!(garage: garage, amount: garage.price_cents, state: 'pending', user: current_user)
+    garage = Rental.find(params[:rental_id])
+    # price = prix unitaire fois nombre de jours
+    order = Order.create!(garage: rental.garage, amount: rental.garage.price_cents, state: 'pending', user: current_user)
 
     session = Stripe::Checkout::Session.create(
       payment_method_types: ['card'],

@@ -12,13 +12,15 @@ Rails.application.routes.draw do
 
   get '/search' => 'pages#search', :as => 'search_page'
 
-  resources :rentals, only: [:destroy, :show]
+  resources :rentals, only: [:destroy, :show] do
+    resources :orders, only: [:create]
+  end
   #resources :reviews
 
   get '/dashboard', to: 'profiles#dashboard'
 
 
-  resources :orders, only: [:show, :create]do
+  resources :orders, only: [:show] do
     resources :payments, only: :new
   end
 
