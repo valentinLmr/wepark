@@ -10,7 +10,7 @@
       <ul>
       <% garage.rentals.each do |rental| %>
         <li><strong><%= rental.user.first_name %></strong> : du <%= rental.start_date %> au <%= rental.end_date %>    <%= link_to rental_path(rental), method: :delete, data: { confirm: "Souhaitez-vous vraiment annuler cette réservation ?" } do %>
-          <i class="far fa-window-close px-1"></i>
+          <i class="far fa-window-close px-1" style="color: #f26d6d; font-size: 1.1em;"></i>
           <% end %>
         </li>
       <% end %>
@@ -27,7 +27,7 @@
       <i class="far fa-edit px-1"></i>
     <% end %>
     <%= link_to garage_path(garage), method: :delete, data: { confirm: "Souhaitez-vous vraiment supprimer cette annonce ?" } do %>
-      <i class="far fa-window-close px-1"></i>
+      <i class="far fa-window-close px-1" style="color: #f26d6d; font-size: 1.1em;"></i>
     <% end %>
   </div>
 </div>
