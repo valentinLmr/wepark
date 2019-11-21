@@ -67,7 +67,6 @@ class GaragesController < ApplicationController
 
   def get_markers(garages)
     # recup garages with valid coordinates
-    # @geocoded_garages = Garage.all
     geocoded_garages = garages.geocoded
     geocoded_garages.map do |garage|
       {
