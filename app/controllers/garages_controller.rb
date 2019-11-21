@@ -4,7 +4,8 @@ class GaragesController < ApplicationController
   def index
     @garages = policy_scope(Garage)
     if params[:query].present?
-      @garages = Garage.where(city: params[:query])
+      sql_query = "city ILIKE :query OR location ILIKE :query"
+      @garages = Garage.where(sql_query, query: "%#{params[:query]}%")
     else
       @garages = Garage.all
     end
