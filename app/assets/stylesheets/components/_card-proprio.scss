@@ -1,20 +1,45 @@
 .carddd {
-  border: 1px solid grey;
   margin: 3px 3px;
   padding: 5px 10px;
-  border-radius: 5px;
+  border-bottom: 1px solid #EBEBEB;
+  position: relative;
 }
 
 .carddd img {
-  margin: 0 auto;
-  width:200px;
-  border-radius: 5px;
-  min-height: 135px;
+    margin: 0 auto;
+    width: 90%;
+    border-radius: 5px;
+    height: 274px;
 }
 
-.right-card {
-  flex-direction: column;
-  justify-content: space-around;
-  text-align: center;
+
+.top-div {
+  border-bottom: 1px solid #EBEBEB;
 }
+.left-card {
+  text-align: center;
+    width: 500px;
+}
+
+
+
+.date p {
+  font-size: 15px;
+}
+
+.price-location {
+    font-size: 30px;
+    color: #329AF0;
+    margin-left: 50px;
+
+}
+.proprio {
+  font-size: 15px ;
+}
+
+.proprio-middle p {
+  margin-left: 72px;
+}
+
+
 
