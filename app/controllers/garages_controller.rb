@@ -32,9 +32,9 @@ class GaragesController < ApplicationController
 
   def create
     @garage = Garage.new(garage_params)
+    @garage.full_address = "#{@garage.location}, #{@garage.postale} #{@garage.city}"
     @garage.user = current_user
     authorize(@garage)
-    garage.full_address = garage.location + garage.postale + garage.city
 
     if @garage.save
       redirect_to garages_path
@@ -56,6 +56,7 @@ class GaragesController < ApplicationController
 
   def update
     @garage = Garage.find(params[:id])
+    @garage.full_address = "#{@garage.location}, #{@garage.postale} #{@garage.city}"
     if @garage.update(garage_params)
       redirect_to garage_path
     else

@@ -31,24 +31,31 @@ last_user = User.last
 
 g = Garage.create!(user: first_user, capacity: 10, price: 50, location: "6 rue des jonquilles", postale: 59830, city: 'Bourghelles', description: "Grand Garage")
 g.remote_photo_url = "https://media.gettyimages.com/photos/garage-picture-id528098460?s=612x612"
+g.full_address = "#{g.location} #{g.postale} #{g.city}"
 g.save!
 g = Garage.create!(user: first_user, capacity: 6, price: 30, location: "10 rue patou", postale: 59000, city: 'Lille', description: "Magnifique Garage éclairé")
 g.remote_photo_url = "https://www.degarageamersfoort.nl/userfiles/images/mbo_garage_bg_1.jpg"
+g.full_address = "#{g.location} #{g.postale} #{g.city}"
 g.save!
 g = Garage.create!(user: last_user, capacity: 7, price: 30, location: "99 rue kleber", postale: 59170, city: 'Croix', description: "Petit Garage plein nord")
 g.remote_photo_url = "https://www.ctm-renovation.fr/wp-content/uploads/2016/04/construire-un-garage.jpg"
+g.full_address = "#{g.location} #{g.postale} #{g.city}"
 g.save!
 g = Garage.create!(user: last_user, capacity: 6, price: 10, location: "12 rue de bourgogne", postale: 59000, city: 'Lille', description: "Magnifique Garage plein sud")
 g.remote_photo_url = "https://www.steeltechsheds.ie/wp-content/gallery/garages-2017/26ft-x-17ft-garage.jpg"
+g.full_address = "#{g.location} #{g.postale} #{g.city}"
 g.save!
 g = Garage.create!(user: last_user, capacity: 12, price: 20, location: "15 rue paul ramadier", postale: 59800, city: 'Lille', description: "Toujours un Garage mal exposé")
 g.remote_photo_url = "https://www.ctm-renovation.fr/wp-content/uploads/2016/04/construire-un-garage.jpg"
+g.full_address = "#{g.location} #{g.postale} #{g.city}"
 g.save!
 g = Garage.create!(user: first_user, capacity: 8, price: 30, location: "12 rue nationale", postale: 59000, city: 'Lille', description: "Encore un Garage bien isolé")
 g.remote_photo_url = "https://www.degarageamersfoort.nl/userfiles/images/mbo_garage_bg_1.jpg"
+g.full_address = "#{g.location} #{g.postale} #{g.city}"
 g.save!
 g = Garage.create!(user: last_user, capacity: 12, price: 25, location: "10 rue paul ramadier", postale: 59800, city: 'Lille', description: "Toujours un Garage mal exposé")
 g.remote_photo_url = "https://www.ctm-renovation.fr/wp-content/uploads/2016/04/construire-un-garage.jpg"
+g.full_address = "#{g.location} #{g.postale} #{g.city}"
 g.save!
 
 puts "finished"
