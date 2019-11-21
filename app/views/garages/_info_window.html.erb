@@ -5,7 +5,7 @@
   </div>
 
   <%= cl_image_tag garage.photo, crop: :fill %>
-  <p><%= garage.location %>, <%= garage.city %></p>
+  <p><%= garage.location %>, <%= garage.postale %> <%= garage.city %></p>
 
   <p><%= link_to "Voir l'annonce", garage_path(garage), class: "btn orange mt-1" %></p>
 
