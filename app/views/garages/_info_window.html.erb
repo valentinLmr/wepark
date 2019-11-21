@@ -1,12 +1,13 @@
 <div class="map-info-photo">
-  <div class="info-prix" >
+  <div class="info-prix my-2" >
     <strong><%= garage.capacity %>m2</strong>
     <%= garage.price %>€/mois
   </div>
 
   <%= cl_image_tag garage.photo, crop: :fill %>
+  <p><%= garage.location %>, <%= garage.city %></p>
 
-  <p><%= link_to "Aller voir l'annonce", garage_path(garage), class: "btn orange mt-3" %></p>
+  <p><%= link_to "Voir l'annonce", garage_path(garage), class: "btn orange mt-1" %></p>
 
 </div>
 

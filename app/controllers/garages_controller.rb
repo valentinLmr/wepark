@@ -3,9 +3,16 @@ class GaragesController < ApplicationController
 
   def index
     @garages = policy_scope(Garage)
-    if params[:query].present?
-      sql_query = "city ILIKE :query OR location ILIKE :query"
-      @garages = Garage.where(sql_query, query: "%#{params[:query]}%")
+    if params[:city].present? || params[:surface].present? || params[:price].present?
+
+      params[:surface].present? ? surface = params[:surface].to_i : surface = 0
+      params[:price].present? ? price = params[:price].to_i : price = 1000
+
+      if params[:city] == ""
+        @garages = Garage.where('capacity >= ? AND price <= ?', surface, price)
+      else
+        @garages = Garage.where('city ILIKE ? AND capacity >= ? AND price <= ?', "%#{params[:city]}%", surface, price)
+      end
     else
       @garages = Garage.all
     end
