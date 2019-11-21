@@ -21,7 +21,12 @@ gem 'carrierwave', '~> 1.2'
 gem 'cloudinary', '~> 1.9.1'
 gem 'geocoder'
 gem 'pundit'
+
+gem 'money-rails'
+gem 'stripe'
+
 gem 'omniauth-facebook'
+
 
 
 group :development do

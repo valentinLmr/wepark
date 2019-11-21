@@ -9,6 +9,7 @@ class Garage < ApplicationRecord
   validates :description, presence: true
   geocoded_by :full_address
   after_validation :geocode, if: :will_save_change_to_full_address?
+  monetize :price_cents
 
   def next_bookings
     Rental.where("garage_id = ? AND end_date > ?", self.id, Date.today)

@@ -3,21 +3,21 @@ class GaragesController < ApplicationController
 
   def index
     @garages = policy_scope(Garage)
-    if params[:city].present? || params[:surface].present? || params[:price].present?
+    if params[:city].present? || params[:surface].present? || params[:price_cents].present?
 
       params[:adresse].present? ? adresse = params[:adresse] : adresse = ""
       params[:rayon].present? ? rayon = params[:rayon].to_i : rayon = 0
 
       params[:surface].present? ? surface = params[:surface].to_i : surface = 0
-      params[:price].present? ? price = params[:price].to_i : price = 1000
+      params[:price_cents].present? ? price = params[:price_cents].to_i : price = 1000
 
       if params[:city] == ""
-        @garages = Garage.where('capacity >= ? AND price <= ?', surface, price).order("price ASC")
+        @garages = Garage.where('capacity >= ? AND price_cents <= ?', surface, price).order("price_cents ASC")
       elsif rayon > 0
         adresse += adresse + ', ' + params[:city]
-        @garages = Garage.where('capacity >= ? AND price <= ?', surface, price).near(adresse, rayon).order("price ASC")
+        @garages = Garage.where('capacity >= ? AND price_cents <= ?', surface, price).near(adresse, rayon).order("price_cents ASC")
       else
-        @garages = Garage.where('city ILIKE ? AND capacity >= ? AND price <= ?', "%#{params[:city]}%", surface, price).order("price ASC")
+        @garages = Garage.where('city ILIKE ? AND capacity >= ? AND price_cents <= ?', "%#{params[:city]}%", surface, price).order("price_cents ASC")
       end
     else
       @garages = Garage.all.order("created_at ASC")
