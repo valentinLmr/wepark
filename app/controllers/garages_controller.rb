@@ -5,11 +5,17 @@ class GaragesController < ApplicationController
     @garages = policy_scope(Garage)
     if params[:city].present? || params[:surface].present? || params[:price].present?
 
+      params[:adresse].present? ? adresse = params[:adresse] : adresse = ""
+      params[:rayon].present? ? rayon = params[:rayon].to_i : rayon = 0
+
       params[:surface].present? ? surface = params[:surface].to_i : surface = 0
       params[:price].present? ? price = params[:price].to_i : price = 1000
 
       if params[:city] == ""
         @garages = Garage.where('capacity >= ? AND price <= ?', surface, price)
+      elsif rayon > 0
+        adresse += adresse + ', ' + params[:city]
+        @garages = Garage.where('capacity >= ? AND price <= ?', surface, price).near(adresse, rayon)
       else
         @garages = Garage.where('city ILIKE ? AND capacity >= ? AND price <= ?', "%#{params[:city]}%", surface, price)
       end
