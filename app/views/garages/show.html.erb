@@ -9,7 +9,7 @@
       </div>
       <div class="garage-images border-bottom" style="margin: auto; text-align: center;">
         <img style="width:600px; border-radius: 10px;" src="<%= @garage.photo %>"/>
-        <p class="py-2"><i class="fas fa-search-location"></i>  <%= @garage.location %>, <%= @garage.postale %> <%= @garage.city %></p>
+        <p class="py-2"><i class="fas fa-search-location"></i>  <%= @garage.location %>, <%= @garage.city %> <a href="1">(Voir sur la carte)</a></p>
       </div>
       <div class="garage-description my-3">
         <h4>Description :</h4>
@@ -18,15 +18,15 @@
     </div>
 
     <div class="col-xs-12 col-4">
-      <div class="info-proprietaire my-3 mb-3" style="min-height: 130px; text-align: center; background-color: white; border-radius: 10px;">
+      <div class="info-proprietaire my-3 mb-3" style="text-align: center; background-color: white; border-radius: 10px;">
         <h3 style="text-align: center;" class="py-2">Proprétaire</h3>
         <p class="mx-3"><%= @garage.user.first_name %> <%= @garage.user.last_name %></p>
-        <a href="mailto:<%= @garage.user.email %>"><p style="margin-bottom: 5px;"><u>Contacter le propriétaire</u></p></a>
+        <a class="btn btn-primary mb-3" style="border-radius: 10px;" href="mailto:<%= @garage.user.email %>">Contacter le propriétaire</a>
       </div>
       <div class="info-proprietaire my-3 mb-3" style="text-align: center; background-color: white; border-radius: 10px;">
         <h3 style="text-align: center;" class="py-2">Réserver en ligne</h3>
         <div class="mx-2 mb-2">
-          <%= link_to 'Louer le  garage', new_garage_rental_path(@garage), class: 'btn btn-warning mb-3' %>
+          <%= link_to 'louer le  garage', new_garage_rental_path(@garage), class: 'btn btn-warning mb-3' %>
           <br>
         </div>
       </div>
@@ -51,10 +51,11 @@
           <div class="review">
             <%= cl_image_tag review.user.photo, height: 50, width: 50, crop: :fill, radius:50 %>
             <p><%= review.content %></p>
+            <%= render 'shared/stars', note: review.rating %>
             <div class="trait"></div>
           </div>
         <% end %>
-        <div><%= link_to 'Ajouter un avis', new_garage_review_path(@garage), class: 'btn btn-primary my-2' %></div>
+        <div><%= link_to 'Ajouter une review', new_garage_review_path(@garage), class: 'btn btn-primary my-2' %></div>
       </div>
 
 
