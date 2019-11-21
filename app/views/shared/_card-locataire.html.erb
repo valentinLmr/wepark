@@ -14,16 +14,14 @@
       <div class="proprio">
         <h3>Propriétaire:</h3>
         <p><i class="fas fa-user-check"></i>   <%= rental.garage.user.first_name %></p>
-        <p><i class="fas fa-phone"></i>     <%= rental.garage.user.phone_number %></p>
+        <p><i class="fas fa-at"></i> <%= rental.garage.user.email %></p>
         <p><i class="fas fa-compass"></i>     <%= rental.garage.location %>, <%= rental.garage.city %></p>
-      </div>
-      <div class="price-location">
-        <strong><%= rental.garage.price %>€/mois</strong>
+        <p style="color: #319AF0; font-size: 1.3em;"><strong><%= rental.garage.price %>€/mois</strong></p>
       </div>
     </div>
   <div class="annuler">
     <%= link_to rental_path(rental), method: :delete, data: { confirm: "Souhaitez-vous vraiment annuler cette réservation ?" } do %>
-      <i class="far fa-window-close px-1"></i>
+      <i class="far fa-window-close px-1" style="color: #f26d6d; font-size: 1.1em;"></i>
     <% end %>
   </div>
   </div>
