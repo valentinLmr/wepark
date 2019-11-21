@@ -6,7 +6,7 @@
       <%= text_field_tag :rue, params[:rue], class: "form-control", placeholder: "Quelle adresse ?" %> <div class="mr-2"></div>
       <%= text_field_tag :rayon, params[:rayon], class: "form-control", placeholder: "Dans quel rayon ? (en Km)" %> <div class="mr-2"></div>
       <%= text_field_tag :surface, params[:surface], class: "form-control", placeholder: "Quelle surface minimum ?" %><div class="mr-2"></div>
-      <%= text_field_tag :price, params[:price], class: "form-control", placeholder: "Quel prix mensuel maximum ?" %><div class="mr-2"></div>
+      <%= text_field_tag :price_cents, params[:price_cents], class: "form-control", placeholder: "Quel prix mensuel maximum ?" %><div class="mr-2"></div>
       <%= submit_tag "Go", class: "btn btn-primary" %>
       </div>
     <% end %>
