@@ -12,15 +12,15 @@ class GaragesController < ApplicationController
       params[:price].present? ? price = params[:price].to_i : price = 1000
 
       if params[:city] == ""
-        @garages = Garage.where('capacity >= ? AND price <= ?', surface, price)
+        @garages = Garage.where('capacity >= ? AND price <= ?', surface, price).order("price ASC")
       elsif rayon > 0
         adresse += adresse + ', ' + params[:city]
-        @garages = Garage.where('capacity >= ? AND price <= ?', surface, price).near(adresse, rayon)
+        @garages = Garage.where('capacity >= ? AND price <= ?', surface, price).near(adresse, rayon).order("price ASC")
       else
-        @garages = Garage.where('city ILIKE ? AND capacity >= ? AND price <= ?', "%#{params[:city]}%", surface, price)
+        @garages = Garage.where('city ILIKE ? AND capacity >= ? AND price <= ?', "%#{params[:city]}%", surface, price).order("created_at ASC")
       end
     else
-      @garages = Garage.all
+      @garages = Garage.all.order("created_at ASC")
     end
     @markers = get_markers(@garages)
   end
