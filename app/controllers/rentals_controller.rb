@@ -21,9 +21,9 @@ class RentalsController < ApplicationController
   end
 
   def create
-    @rental = Rental.new(params_rental)
-    @garage = Garage.find(params[:garage_id])
-    @rental.user = current_user
+    @rental        = Rental.new(params_rental)
+    @garage        = Garage.find(params[:garage_id])
+    @rental.user   = current_user
     @rental.garage = @garage
 
     if @rental.save
@@ -36,7 +36,7 @@ class RentalsController < ApplicationController
 
   def destroy
     @rental = Rental.find(params[:id])
-    @rental.delete
+    @rental.destroy
     redirect_to dashboard_path
   end
 
@@ -47,14 +47,16 @@ class RentalsController < ApplicationController
   end
 
   def create_an_order
-    @order = Order.create!(rental: @rental, amount: @garage.price_cents, state: 'pending', user: current_user)
+    @price_unitaire = @rental.to_pay
+
+    @order = Order.create!(rental: @rental, amount: @price_unitaire, state: 'pending', user: current_user)
 
     session = Stripe::Checkout::Session.create(
       payment_method_types: ['card'],
       line_items: [{
         name: @garage.location,
         images: [@garage.photo],
-        amount: @garage.price_cents,
+        amount: @price_unitaire,
         currency: 'eur',
         quantity: 1
       }],
