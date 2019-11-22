@@ -9,7 +9,7 @@ class GaragesController < ApplicationController
       adresse    = params[:adresse].present? ? "#{params[:adresse]}, #{params[:city]}" : params[:city].to_s
       rayon      = params[:rayon].present? ? params[:rayon].to_i : 0
       surface    = params[:surface].present? ? params[:surface].to_i : 0
-      price      = params[:price].present? ? params[:price].to_i : 1000
+      price      = params[:price].present? ? params[:price].to_i : 10000000
       start_date = params[:datedebut].present? ? params[:datedebut] : Date.today
       end_date   = params[:datefin].present? ? params[:datefin] : Date.today
       request_by_date = false
