@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="row py-4 d-flex">
+    <div class="col-md-3"><%= cl_image_tag @order.rental.garage.photo, width: '500', height: '100%' %></div>
+    <div class="col" style=" margin-left: 269px;">
+      <h1>Votre réservation de garage</h1>
+      <p>
+        <i class="fas fa-cube"></i> <%= @order.rental.garage.capacity %> m2
+      </p>
+      <p>
+        <i class="fas fa-user-check"></i> <%= @order.rental.garage.user.first_name %>
+      </p>
+      <p>
+        <i class="fas fa-phone"></i> <%= @order.rental.garage.user.phone_number %>
+      </p>
+      <p>
+        <i class="fas fa-compass"></i> <%= @order.rental.garage.location %>, <%= @order.rental.garage.city %>
+      </p>
+      <p>for <strong><%= humanized_money_with_symbol @order.amount / 100 %></strong></p>
+      <button id="pay" class="btn btn-primary">Payer</button>
+      <script src="https://js.stripe.com/v3/"></script>
+      <script>
+        const paymentButton = document.getElementById('pay');
+        paymentButton.addEventListener('click', () => {
+          const stripe = Stripe('<%= ENV['STRIPE_PUBLISHABLE_KEY'] %>');
+          stripe.redirectToCheckout({
+            sessionId: '<%= @order.checkout_session_id %>'
+          });
+        });
+      </script>
+    </div>
+  </div>
+</div>

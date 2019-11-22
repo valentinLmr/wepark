@@ -1,21 +1,28 @@
-<div class="d-flex carddd mt-3 d-flex align-items-center justify-content-between">
+<div class="d-flex carddd mt-3 d-flex align-items-center">
 
-  <div class="left-card ml-4 pt-3" style="text-align: center;">
-    <h5>Garage de <%= rental.garage.capacity %>m2 à <%= rental.garage.city %></h5>
+  <div class="left-card ml-4" style="text-align: center;">
     <img class="mb-2" src="<%= rental.garage.photo %>" />
-    <p><%= rental.garage.price %>€/mois</p>
   </div>
 
   <div class="middle-card ml-4">
-    <p><strong>Prix mensuel :</strong> <%= rental.garage.price %>€</p>
-    <p><strong>Adresse :</strong> <%= rental.garage.location %> <%= rental.garage.city %></p>
-    <p><strong>Du :</strong> <%= rental.start_date %></p>
-    <p><strong>Au :</strong> <%= rental.end_date %></p>
-    <p><strong>Contact propriétaire :</strong> <%= rental.garage.user.phone_number %> </p>
+    <div class="info">
+      <h5> <strong> Garage de <%= rental.garage.capacity %>m2 à <%= rental.garage.city %> </strong></h5>
+      <div class="date">
+        <p> <strong>Du</strong>: <%= rental.start_date %> </p>
+        <p> <strong>Au</strong>:   <%= rental.end_date %> </p>
+      </div>
+      <div class="proprio">
+        <h3>Propriétaire:</h3>
+        <p><i class="fas fa-user-check"></i>   <%= rental.garage.user.first_name %></p>
+        <p><i class="fas fa-at"></i> <%= rental.garage.user.email %></p>
+        <p><i class="fas fa-compass"></i>     <%= rental.garage.location %>, <%= rental.garage.city %></p>
+        <p style="color: #319AF0; font-size: 1.3em;"><strong><%= rental.garage.price %>€/mois</strong></p>
+      </div>
+    </div>
+  <div class="annuler">
+    <%= link_to rental_path(rental), method: :delete, data: { confirm: "Souhaitez-vous vraiment annuler cette réservation ?" } do %>
+      <i class="far fa-window-close px-1" style="color: #f26d6d; font-size: 1.1em;"></i>
+    <% end %>
   </div>
-
-  <div class="right-card mr-3">
-    <%= link_to 'Annuler cette location', rental_path(rental), method: :delete, data: { confirm: "Etes-vous certains ?"}, class: 'btn btn-danger' %>
   </div>
-
 </div>

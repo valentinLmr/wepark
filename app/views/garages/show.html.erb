@@ -21,12 +21,12 @@
       <div class="info-proprietaire my-3 mb-3" style="min-height: 130px; text-align: center; background-color: white; border-radius: 10px;">
         <h3 style="text-align: center;" class="py-2">Proprétaire</h3>
         <p class="mx-3"><%= @garage.user.first_name %> <%= @garage.user.last_name %></p>
-        <a href="mailto:<%= @garage.user.email %>"><p style="margin-bottom: 5px;"><u>Contacter le propriétaire</u></p></a>
+        <a class="mb-3" href="mailto:<%= @garage.user.email %>">Contacter le propriétaire</a>
       </div>
       <div class="info-proprietaire my-3 mb-3" style="text-align: center; background-color: white; border-radius: 10px;">
         <h3 style="text-align: center;" class="py-2">Réserver en ligne</h3>
         <div class="mx-2 mb-2">
-          <%= link_to 'Louer le  garage', new_garage_rental_path(@garage), class: 'btn btn-warning mb-3' %>
+          <%= link_to 'Louer ce  garage', new_garage_rental_path(@garage), class: 'btn btn-warning mb-3' %>
           <br>
         </div>
       </div>
@@ -44,17 +44,31 @@
         </div>
       </div>
 
-      <div class="info-reviews my-3 mb-3" style="text-align: center; background-color: white; border-radius: 10px;">
+      <div class="info-reviews my-3 mb-3" style="text-align: center; background-color: white; border-radius: 10px; min-height: 100px;">
         <h3 style="text-align: center;" class="py-2">Avis</h3>
-
+        <% if @reviews == [] %>
+        <p>Aucun avis pour le moment</p>
+        <% else %>
         <% @reviews.each do |review| %>
           <div class="review">
-            <%= cl_image_tag review.user.photo, height: 50, width: 50, crop: :fill, radius:50 %>
+            <% if review.user.photo? %>
+              <%= cl_image_tag review.user.photo, height: 50, width: 50, crop: :fill, radius:50 %>
+            <% elsif review.user.facebook_picture_url? %>
+              <%= cl_image_tag review.user.facebook_picture_url, height: 50, width: 50, crop: :fill, radius:50 %>
+            <% end %>
             <p><%= review.content %></p>
+            <%= render 'shared/stars', note: review.rating %>
             <div class="trait"></div>
           </div>
         <% end %>
-        <div><%= link_to 'Ajouter un avis', new_garage_review_path(@garage), class: 'btn btn-primary my-2' %></div>
+        <% end %>
+        <% if user_signed_in? %>
+          <% if @garage.display_add_review_form(current_user) %>
+            <div>
+              <%= link_to 'Ajouter une review', new_garage_review_path(@garage), class: 'btn btn-primary my-2' %>
+            </div>
+          <% end %>
+        <% end %>
       </div>
 
 

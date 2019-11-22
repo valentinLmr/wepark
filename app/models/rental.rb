@@ -3,6 +3,7 @@ class Rental < ApplicationRecord
   belongs_to :user
 
   validates :start_date, :end_date, presence: true
+  has_many :orders, dependent: :destroy
 
   def rental_available?(date_debut, date_fin)
     # sql_query = "garage_id = ? AND end_date < ? AND start_date >"

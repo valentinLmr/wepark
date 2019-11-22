@@ -47,7 +47,7 @@ class GaragesController < ApplicationController
       end
 
     else
-      @garages = Garage.all
+      @garages = Garage.all.order("created_at ASC")
     end
 
     @markers = get_markers(@garages)

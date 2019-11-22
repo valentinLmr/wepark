@@ -22,6 +22,13 @@ gem 'cloudinary', '~> 1.9.1'
 gem 'geocoder'
 gem 'pundit'
 
+gem 'money-rails'
+gem 'stripe'
+
+gem 'omniauth-facebook'
+
+
+
 group :development do
   gem 'web-console', '>= 3.3.0'
 end
