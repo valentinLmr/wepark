@@ -142,7 +142,7 @@ class GaragesController < ApplicationController
   end
 
   def garage_params
-    params.require(:garage).permit(:capacity, :price_cents, :description, :location, :photo, :search, :city, :postale)
+    params.require(:garage).permit(:capacity, :price, :description, :location, :photo, :search, :city, :postale)
   end
 
   def at_least_city_or_surface_or_price_cents_present?
