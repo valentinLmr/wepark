@@ -3,6 +3,7 @@ class Rental < ApplicationRecord
   belongs_to :user
 
   validates :start_date, :end_date, presence: true
+  has_many :orders, dependent: :destroy
 
   # end_date_after_start_date, :validate_each
 
