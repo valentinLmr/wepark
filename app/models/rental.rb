@@ -4,6 +4,23 @@ class Rental < ApplicationRecord
 
   validates :start_date, :end_date, presence: true
 
+  def number_of_day
+    rentals = (self.start_date..self.end_date).to_a
+
+    rentals.flatten.count
+
+    # price_display = (prix / 30) * numberofday
+    # @price_unitaire = price_display.round(2)
+  end
+
+  def total_price
+    self.number_of_day * self.garage.price_per_day
+  end
+
+  def to_pay
+    self.number_of_day * self.garage.payement
+  end
+
   # end_date_after_start_date, :validate_each
 
   # validates :check_date

@@ -14,4 +14,12 @@ class Garage < ApplicationRecord
   def next_bookings
     Rental.where("garage_id = ? AND end_date > ?", self.id, Date.today)
   end
+
+  def price_per_day
+    (self.price_cents.fdiv(100) / 30).round(2)
+  end
+
+  def payement
+    self.price_cents.fdiv(30).round
+  end
 end

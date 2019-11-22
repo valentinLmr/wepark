@@ -15,9 +15,9 @@
       <p>
         <i class="fas fa-compass"></i> <%= @order.rental.garage.location %>, <%= @order.rental.garage.city %>
       </p>
-      <p>for <strong><%= humanized_money_with_symbol @order.amount / 100 %></strong></p>
+      <p>for <strong><%= humanized_money_with_symbol @price_unitaire%></strong></p>
       <button id="pay" class="btn btn-primary">Payer</button>
-      <script src="https://js.stripe.com/v3/"></script>
+      <script src="https://js.stripe.com/v3/" data-amount="2000"></script>
       <script>
         const paymentButton = document.getElementById('pay');
         paymentButton.addEventListener('click', () => {
