@@ -7,7 +7,7 @@ class GaragesController < ApplicationController
     if at_least_city_or_surface_or_price_cents_present?
 
       adresse     = params[:adresse].present? ? "#{params[:adresse]}, #{params[:city]}" : params[:city].to_s
-      rayon       = params[:rayon].present? ? params[:rayon].to_i : 0
+      rayon       = params[:rayon].present? ? params[:rayon].to_i : 15
       surface     = params[:surface].present? ? params[:surface].to_i : 0
       price_cents = params[:price_cents].present? ? params[:price_cents].to_i * 100 : 100000000000
       start_date  = params[:datedebut].present? ? params[:datedebut] : Date.today
@@ -28,9 +28,9 @@ class GaragesController < ApplicationController
       if params[:city].blank?
 
         if request_by_date
-          @garages = @garages.where('capacity >= ? AND price_cents <= ?', surface, price_cents).where({ id: selected_garages }).order('price_cents ASC')
+          @garages = @garages.where('capacity >= ? AND price_cents <= ?', surface, price_cents).near(adresse, rayon).where({ id: selected_garages }).order('price_cents ASC')
         else
-          @garages = @garages.where('capacity >= ? AND price_cents <= ?', surface, price_cents).order('price_cents ASC')
+          @garages = @garages.where('capacity >= ? AND price_cents <= ?', surface, price_cents).near(adresse, rayon).order('price_cents ASC')
         end
 
       elsif rayon > 0
