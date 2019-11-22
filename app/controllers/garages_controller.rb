@@ -28,27 +28,27 @@ class GaragesController < ApplicationController
       if params[:city].blank?
 
         if request_by_date
-          @garages = @garages.where('capacity >= ? AND price_cents <= ?', surface, price_cents).where({ id: selected_garages })
+          @garages = @garages.where('capacity >= ? AND price_cents <= ?', surface, price_cents).where({ id: selected_garages }).order('price_cents ASC')
         else
-          @garages = @garages.where('capacity >= ? AND price_cents <= ?', surface, price_cents)
+          @garages = @garages.where('capacity >= ? AND price_cents <= ?', surface, price_cents).order('price_cents ASC')
         end
 
       elsif rayon > 0
 
         if request_by_date
-          @garages = @garages.where('capacity >= ? AND price_cents <= ?', surface, price_cents).near(adresse, rayon).where({ id: selected_garages })
+          @garages = @garages.where('capacity >= ? AND price_cents <= ?', surface, price_cents).near(adresse, rayon).where({ id: selected_garages }).order('price_cents ASC')
         else
-          @garages = @garages.where('capacity >= ? AND price_cents <= ?', surface, price_cents).near(adresse, rayon)
+          @garages = @garages.where('capacity >= ? AND price_cents <= ?', surface, price_cents).near(adresse, rayon).order('price_cents ASC')
         end
 
       elsif request_by_date
-        @garages = @garages.where('city ILIKE ? AND capacity >= ? AND price_cents <= ?', "%#{params[:city]}%", surface, price_cents).where({ id: selected_garages })
+        @garages = @garages.where('city ILIKE ? AND capacity >= ? AND price_cents <= ?', "%#{params[:city]}%", surface, price_cents).where({ id: selected_garages }).order('price_cents ASC')
       else
-        @garages = @garages.where('city ILIKE ? AND capacity >= ? AND price_cents <= ?', "%#{params[:city]}%", surface, price_cents)
+        @garages = @garages.where('city ILIKE ? AND capacity >= ? AND price_cents <= ?', "%#{params[:city]}%", surface, price_cents).order('price_cents ASC')
       end
 
     else
-      @garages = Garage.all.order("created_at ASC")
+      @garages = Garage.all.order("price_cents ASC")
     end
 
     @markers = get_markers(@garages)
