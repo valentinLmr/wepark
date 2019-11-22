@@ -2,13 +2,13 @@
   <div class="col-12" style="height: 60px;">
     <%= form_tag garages_path, method: :get do %>
     <div class="d-flex align-items-center justify-content-between">
-      <%= text_field_tag :city, params[:city], class: "form-control", placeholder: "Quelle ville ?" %> <div class="mr-2"></div>
-      <%= text_field_tag :rue, params[:rue], class: "form-control", placeholder: "Quelle adresse ?" %> <div class="mr-2"></div>
-      <%= text_field_tag :rayon, params[:rayon], class: "form-control", placeholder: "Dans quel rayon ? (en Km)" %> <div class="mr-2"></div>
-      <%= text_field_tag :surface, params[:surface], class: "form-control", placeholder: "Quelle surface minimum ?" %><div class="mr-2"></div>
-      <%= text_field_tag :price_cents, params[:price_cents], class: "form-control", placeholder: "Quel prix mensuel maximum ?" %><div class="mr-2"></div>
-      <%= text_field_tag :datedebut, params[:datedebut], class: "form-control", placeholder: "De quelle date ?" %><div class="mr-2"></div>
-      <%= text_field_tag :datefin, params[:datefin], class: "form-control", placeholder: "A quelle date ?" %><div class="mr-2"></div>
+      <%= text_field_tag :city, params[:city], class: "form-control", placeholder: "Ville" %> <div class="mr-2"></div>
+      <%= text_field_tag :rue, params[:rue], class: "form-control", placeholder: "Adresse" %> <div class="mr-2"></div>
+      <%= text_field_tag :rayon, params[:rayon], class: "form-control", placeholder: "Rayon (en Km)" %> <div class="mr-2"></div>
+      <%= text_field_tag :surface, params[:surface], class: "form-control", placeholder: "Surface min" %><div class="mr-2"></div>
+      <%= text_field_tag :price_cents, params[:price_cents], class: "form-control", placeholder: "Prix mensuel max" %><div class="mr-2"></div>
+      <%= date_field_tag :datedebut, params[:datedebut], class: "form-control", placeholder: "Date de début" %><div class="mr-2"></div>
+      <%= date_field_tag :datefin, params[:datefin], class: "form-control", placeholder: "Date de fin" %><div class="mr-2"></div>
       <%= submit_tag "Go", class: "btn btn-primary" %>
       </div>
     <% end %>
