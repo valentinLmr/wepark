@@ -6,7 +6,7 @@
       <p><%= garage.location %><br><strong><%= garage.price %>€/mois</strong> <%= render 'shared/stars', note: average(garage) %></p>
     </div>
     <div class="loue-par">
-      <p><%= garage.user.first_name %> est votre propriétaire</p>
+      <p>Proposé par <%= garage.user.first_name %></p>
       <br>
       <p><%= link_to "Plus d'infos", garage_path(garage), class: "btn orange" %></p>
     </div>
