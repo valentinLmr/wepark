@@ -4,14 +4,15 @@ class GaragesController < ApplicationController
   def index
     @garages = policy_scope(Garage)
 
-    if at_least_city_or_surface_or_price_present?
+    if at_least_city_or_surface_or_price_cents_present?
 
-      adresse    = params[:adresse].present? ? "#{params[:adresse]}, #{params[:city]}" : params[:city].to_s
-      rayon      = params[:rayon].present? ? params[:rayon].to_i : 0
-      surface    = params[:surface].present? ? params[:surface].to_i : 0
-      price      = params[:price].present? ? params[:price].to_i : 1000
-      start_date = params[:datedebut].present? ? params[:datedebut] : Date.today
-      end_date   = params[:datefin].present? ? params[:datefin] : Date.today
+      adresse     = params[:adresse].present? ? "#{params[:adresse]}, #{params[:city]}" : params[:city].to_s
+      rayon       = params[:rayon].present? ? params[:rayon].to_i : 0
+      surface     = params[:surface].present? ? params[:surface].to_i : 0
+      price_cents = params[:price_cents].present? ? params[:price_cents].to_i : 0
+      start_date  = params[:datedebut].present? ? params[:datedebut] : Date.today
+      end_date    = params[:datefin].present? ? params[:datefin] : Date.today
+
       request_by_date = false
 
       selected_garages = []
@@ -27,23 +28,23 @@ class GaragesController < ApplicationController
       if params[:city].blank?
 
         if request_by_date
-          @garages = @garages.where('capacity >= ? AND price <= ?', surface, price).where({ id: selected_garages })
+          @garages = @garages.where('capacity >= ? AND price_cents <= ?', surface, price_cents).where({ id: selected_garages })
         else
-          @garages = @garages.where('capacity >= ? AND price <= ?', surface, price)
+          @garages = @garages.where('capacity >= ? AND price_cents <= ?', surface, price_cents)
         end
 
       elsif rayon > 0
 
         if request_by_date
-          @garages = @garages.where('capacity >= ? AND price <= ?', surface, price).where('selected = ?', true).near(adresse, rayon).where({ id: selected_garages })
+          @garages = @garages.where('city ILIKE ? AND capacity >= ? AND price_cents <= ?', "%#{params[:city]}%", surface, price_cents).near(adresse, rayon).where({ id: selected_garages })
         else
-          @garages = @garages.where('capacity >= ? AND price <= ?', surface, price).where('selected = ?', true).near(adresse, rayon)
+          @garages = @garages.where('city ILIKE ? AND capacity >= ? AND price_cents <= ?', "%#{params[:city]}%", surface, price_cents).near(adresse, rayon)
         end
 
       elsif request_by_date
-        @garages = @garages.where('city ILIKE ? AND capacity >= ? AND price <= ?', "%#{params[:city]}%", surface, price).where({ id: selected_garages })
+        @garages = @garages.where('city ILIKE ? AND capacity >= ? AND price_cents <= ?', "%#{params[:city]}%", surface, price_cents).where({ id: selected_garages })
       else
-        @garages = @garages.where('city ILIKE ? AND capacity >= ? AND price <= ?', "%#{params[:city]}%", surface, price)
+        @garages = @garages.where('city ILIKE ? AND capacity >= ? AND price_cents <= ?', "%#{params[:city]}%", surface, price_cents)
       end
 
     else
@@ -141,10 +142,10 @@ class GaragesController < ApplicationController
   end
 
   def garage_params
-    params.require(:garage).permit(:capacity, :price, :description, :location, :photo, :search, :city, :postale)
+    params.require(:garage).permit(:capacity, :price_cents, :description, :location, :photo, :search, :city, :postale)
   end
 
-  def at_least_city_or_surface_or_price_present?
-    params[:city].present? || params[:surface].present? || params[:price].present?
+  def at_least_city_or_surface_or_price_cents_present?
+    params[:city].present? || params[:surface].present? || params[:price_cents].present?
   end
 end
