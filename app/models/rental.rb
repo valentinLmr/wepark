@@ -5,11 +5,32 @@ class Rental < ApplicationRecord
   validates :start_date, :end_date, presence: true
   has_many :orders, dependent: :destroy
 
+
+  def number_of_day
+    rentals = (self.start_date..self.end_date).to_a
+
+    rentals.flatten.count
+
+    # price_display = (prix / 30) * numberofday
+    # @price_unitaire = price_display.round(2)
+  end
+
+  def total_price
+    self.number_of_day * self.garage.price_per_day
+  end
+
+  def to_pay
+    self.number_of_day * self.garage.payement
+  end
+
+  # end_date_after_start_date, :validate_each
+
   def rental_available?(date_debut, date_fin)
     # sql_query = "garage_id = ? AND end_date < ? AND start_date >"
     # Rental.where(sql_query, self.id, date_fin, date_debut)
     Rental.rental_available?(self.id, date_fin, date_debut)
   end
+
 
   # end_date_after_start_date, :validate_each
   # validates :check_date

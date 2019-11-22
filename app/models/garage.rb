@@ -15,7 +15,16 @@ class Garage < ApplicationRecord
     Rental.where("garage_id = ? AND end_date > ?", self.id, Date.today)
   end
 
+
+  def price_per_day
+    (self.price_cents.fdiv(100) / 30).round(2)
+  end
+
+  def payement
+    self.price_cents.fdiv(30).round
+
   def display_add_review_form(user)
     user.rentals.select { |rental| rental.start_date <= Date.today }.map(&:garage).include?(self)
+
   end
 end
