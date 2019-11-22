@@ -1,15 +1,18 @@
-<div class="container">
-  <div class="row py-4">
-    <div class="col-md-3"><%= cl_image_tag @order.rental.garage.photo, width: '100%' %></div>
-    <div class="col">
-      <h1>Order #<%= @order.id %> <small><span class="badge badge-primary">DONE</span></small></h1>
+<div class="container justify-content-center;">
+  <div class="row d-flex justify-content-center py-4" style="margin: auto;">
+
+    <div class="col-3"><%= cl_image_tag @order.rental.garage.photo, width: '100%'; %></div>
+
+    <div class="col-9">
+      <h1><small><span class="badge badge-primary">Reservation effectuée</span></small></h1>
       <ul class="list-unstyled">
-        <li><strong>ISSUED ON</strong> <%= @order.created_at.to_date %></li>
-        <li><strong>GARAGE</strong> <%= @order.rental.garage.location%> </li>
-        <li><strong>TOTAL</strong> <%= humanized_money_with_symbol @price_unitaire %></li>
+        <li><strong>Adresse :</strong> <%= @order.rental.garage.location%> </li>
+        <li><strong>Montant de votre location :</strong> <%= humanized_money_with_symbol @price_unitaire %></li>
         </li>
       </ul>
-      <p> <strong>Thanks for you trust</strong></p>
+      <p> <strong>Merci de votre confiance</strong></p>
+      <a class="btn btn-ghost" href="/dashboard">Voir mon dashboard</a>
     </div>
+
   </div>
 </div>
