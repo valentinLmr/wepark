@@ -2,12 +2,12 @@
   <div class="row py-4 d-flex">
     <div class="col-md-3"><%= cl_image_tag @order.rental.garage.photo, width: '500', height: '100%' %></div>
     <div class="col" style=" margin-left: 269px;">
-      <h1>Votre réservation de garage</h1>
+      <h1>Détails de votre réservation</h1>
       <p>
         <i class="fas fa-cube"></i> <%= @order.rental.garage.capacity %> m2
       </p>
       <p>
-        <i class="fas fa-user-check"></i> <%= @order.rental.garage.user.first_name %>
+        <i class="fas fa-user-check"></i> <%= @order.rental.garage.user.first_name %> <%= @order.rental.garage.user.last_name %>
       </p>
       <p>
         <i class="fas fa-phone"></i> <%= @order.rental.garage.user.phone_number %>
@@ -15,8 +15,13 @@
       <p>
         <i class="fas fa-compass"></i> <%= @order.rental.garage.location %>, <%= @order.rental.garage.city %>
       </p>
-      <p>for <strong><%= humanized_money_with_symbol @price_unitaire%></strong></p>
-      <button id="pay" class="btn btn-primary">Payer</button>
+      <p>
+        <i class="fas fa-calendar-alt"></i> <strong>Du</strong> <%= @order.rental.start_date %> <strong>au </strong> <%= @order.rental.end_date %>
+      </p>
+      <p>
+        <i class="fas fa-euro-sign"></i> Montant total : <strong><%= @price_unitaire %>€</strong>
+      </p>
+      <button id="pay" class="btn btn-primary">Payer</button> <%= link_to 'Annuler', garages_path, class: 'btn btn-danger' %>
       <script src="https://js.stripe.com/v3/" data-amount="2000"></script>
       <script>
         const paymentButton = document.getElementById('pay');

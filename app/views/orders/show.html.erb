@@ -1,18 +1,23 @@
-<div class="container justify-content-center;">
-  <div class="row d-flex justify-content-center py-4" style="margin: auto;">
 
-    <div class="col-3"><%= cl_image_tag @order.rental.garage.photo, width: '100%'; %></div>
 
-    <div class="col-9">
-      <h1><small><span class="badge badge-primary">Reservation effectuée</span></small></h1>
+
+
+<div class="container d-flex mt-3 pr-3 py-3 justify-content-center" style="background-color: white; width: 650px;">
+
+  <div class="left mt-2">
+    <%= cl_image_tag @order.rental.garage.photo, width: '300px', height: '100%'; %>
+  </div>
+  <div class="right ml-3">
+    <h1><small><span class="badge badge-primary">Reservation effectuée</span></small></h1>
       <ul class="list-unstyled">
-        <li><strong>Adresse :</strong> <%= @order.rental.garage.location%> </li>
+        <li><strong>Adresse :</strong> <%= @order.rental.garage.location%>, <%= @order.rental.garage.city %></li>
+        <li><strong>Prix mensuel : </strong> <%= @order.rental.garage.price%>€</li>
+        <li><strong>Nombre de jours de location :</strong> <%= @order.rental.number_of_day %></li>
         <li><strong>Montant de votre location :</strong> <%= humanized_money_with_symbol @price_unitaire %></li>
         </li>
       </ul>
       <p> <strong>Merci de votre confiance</strong></p>
       <a class="btn btn-ghost" href="/dashboard">Voir mon dashboard</a>
-    </div>
-
   </div>
+
 </div>
