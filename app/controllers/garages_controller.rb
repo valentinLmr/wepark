@@ -27,23 +27,23 @@ class GaragesController < ApplicationController
       if params[:city].blank?
 
         if request_by_date
-          @garages = @garages.where('capacity >= ? AND price <= ?', surface, price).where({ id: selected_garages })
+          @garages = @garages.where('capacity >= ? AND price_cents <= ?', surface, price).where({ id: selected_garages })
         else
-          @garages = @garages.where('capacity >= ? AND price <= ?', surface, price)
+          @garages = @garages.where('capacity >= ? AND price_cents <= ?', surface, price)
         end
 
       elsif rayon > 0
 
         if request_by_date
-          @garages = @garages.where('capacity >= ? AND price <= ?', surface, price).where('selected = ?', true).near(adresse, rayon).where({ id: selected_garages })
+          @garages = @garages.where('capacity >= ? AND price_cents <= ?', surface, price).where('selected = ?', true).near(adresse, rayon).where({ id: selected_garages })
         else
-          @garages = @garages.where('capacity >= ? AND price <= ?', surface, price).where('selected = ?', true).near(adresse, rayon)
+          @garages = @garages.where('capacity >= ? AND price_cents <= ?', surface, price).where('selected = ?', true).near(adresse, rayon)
         end
 
       elsif request_by_date
-        @garages = @garages.where('city ILIKE ? AND capacity >= ? AND price <= ?', "%#{params[:city]}%", surface, price).where({ id: selected_garages })
+        @garages = @garages.where('city ILIKE ? AND capacity >= ? AND price_cents <= ?', "%#{params[:city]}%", surface, price).where({ id: selected_garages })
       else
-        @garages = @garages.where('city ILIKE ? AND capacity >= ? AND price <= ?', "%#{params[:city]}%", surface, price)
+        @garages = @garages.where('city ILIKE ? AND capacity >= ? AND price_cents <= ?', "%#{params[:city]}%", surface, price)
       end
 
     else
