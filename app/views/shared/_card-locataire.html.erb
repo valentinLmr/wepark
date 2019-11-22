@@ -20,6 +20,9 @@
       </div>
     </div>
   <div class="annuler">
+    <%= link_to garage_path(rental.garage) do %>
+      <i class="far fa-eye px-1"></i>
+    <% end %>
     <%= link_to rental_path(rental), method: :delete, data: { confirm: "Souhaitez-vous vraiment annuler cette réservation ?" } do %>
       <i class="far fa-window-close px-1" style="color: #f26d6d; font-size: 1.1em;"></i>
     <% end %>
