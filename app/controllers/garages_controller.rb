@@ -39,7 +39,6 @@ class GaragesController < ApplicationController
         else
           @garages = @garages.where('capacity >= ? AND price <= ?', surface, price).where('selected = ?', true).near(adresse, rayon)
         end
-
       elsif request_by_date
         @garages = @garages.where('city ILIKE ? AND capacity >= ? AND price <= ?', "%#{params[:city]}%", surface, price).where({ id: selected_garages })
       else
