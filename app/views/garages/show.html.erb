@@ -58,8 +58,12 @@
           </div>
         <% end %>
         <% end %>
-        <% if @garage.display_add_review_form(current_user) %>
-        <div><%= link_to 'Ajouter une review', new_garage_review_path(@garage), class: 'btn btn-primary my-2' %></div>
+        <% if user_signed_in? %>
+          <% if @garage.display_add_review_form(current_user) %>
+            <div>
+              <%= link_to 'Ajouter une review', new_garage_review_path(@garage), class: 'btn btn-primary my-2' %>
+            </div>
+          <% end %>
         <% end %>
       </div>
 
