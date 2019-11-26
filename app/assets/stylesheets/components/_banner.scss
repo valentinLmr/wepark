@@ -13,6 +13,7 @@
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
   font-size: 32px;
   font-weight: bold;
+  font-size: 40px;
 }
 
 .banner p {
@@ -25,6 +26,7 @@
 
 .search-form-control {
   position: relative;
+  height:70px
 }
 
 .search-form-control .btn {
@@ -32,16 +34,31 @@
   top: 8px;
   bottom: 8px;
   right: 8px;
+  height:20px;
+  width: 20px;
 }
 
 .search-form-control .form-control {
   height: 3.5rem;
   box-shadow: 0 2px 6px rgba(0,0,0,0.08);
   border: 1px solid #E7E7E7;
+  height: 70px;
 }
 
 .search-form-control .form-control:focus {
   border: 1px solid #1EDD88;
   outline: none !important;
   box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+.form-control{
+  height:80px;
+  width: 100%;
+  margin-left: 150px;
+}
+
+
+.btn-primary{
+  width: 130px;
+  margin-right: 190px;
 }
