@@ -21,7 +21,9 @@ const buildMap = () => {
 };
 
 const addMarkersToMap = (map, markers) => {
+  console.log(markers)
   markers.forEach((marker) => {
+    console.log(marker)
     const popup = new mapboxgl.Popup().setHTML(marker.infoWindow); // add this for infowindow
 
     new mapboxgl.Marker()
